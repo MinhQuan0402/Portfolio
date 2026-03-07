@@ -1,14 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starter HTML JS CSS</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
-</head>
-<body>
-    <!--Prepared by Mr Suen for your convenience-->
-    <p>if you see grey background and alert pop up means links to css and js working!</p>
-</body>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Starter HTML JS CSS</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js" defer></script>
+    </head>
+
+    <body>
+
+        <nav class="navbar">
+
+            <h2 class="logo">Quan</h2>
+
+            <ul class="nav-links">
+            <li><a onclick="showSection('home')">Home</a></li>
+            <li><a onclick="showSection('about')">About</a></li>
+            <li><a onclick="showSection('skills')">Skills</a></li>
+            <li><a onclick="showSection('projects')">Projects</a></li>
+            <li><a onclick="showSection('contact')">Contact</a></li>
+        </ul>
+
+        </nav>
+
+
+        <!-- HOME -->
+
+        <section id="home" class="section active">
+
+        <h1>Hello, I'm <span>Quan</span></h1>
+        <p>Aspiring Game Developer</p>
+
+        <button onclick="showSection('projects')">
+        View My Work
+        </button>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section id="about" class="section">
+
+        <h1>About Me</h1>
+
+        <p>
+        I am passionate about game development and graphics programming.
+        I enjoy building systems using C++, Unity, and OpenGL.
+        </p>
+
+        </section>
+
+
+        <!-- SKILLS -->
+
+        <section id="skills" class="section">
+
+        <h1>Skills</h1>
+
+        <div class="skill">
+        <p>C++</p>
+        <div class="bar"><div class="progress cpp"></div></div>
+        </div>
+
+        <div class="skill">
+        <p>Unity</p>
+        <div class="bar"><div class="progress unity"></div></div>
+        </div>
+
+        <div class="skill">
+        <p>OpenGL</p>
+        <div class="bar"><div class="progress opengl"></div></div>
+        </div>
+
+        <div class="skill">
+        <p>JavaScript</p>
+        <div class="bar"><div class="progress js"></div></div>
+        </div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+
+        <section id="projects" class="section">
+
+        <h1>Projects</h1>
+
+        <div class="project-grid">
+
+        <div class="project-card">
+        <h3>Physics Simulation Game</h3>
+        <p>Game that teaches OOP using particle physics.</p>
+        </div>
+
+        <div class="project-card">
+        <h3>Custom Game Engine</h3>
+        <p>Built using C++ and OpenGL.</p>
+        </div>
+
+        <div class="project-card">
+        <h3>Enemy AI FSM</h3>
+        <p>Stack based finite state machine system.</p>
+        </div>
+
+        </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section id="contact" class="section">
+
+        <h1>Contact</h1>
+
+        <p>Email: quan@email.com</p>
+        <p>GitHub: github.com/quan</p>
+        <p>LinkedIn: linkedin.com/in/quan</p>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <div class="footer-container">
+
+            <div class="footer-left">
+            <h3>Quan</h3>
+            <p>Aspiring Game Developer & Programmer</p>
+            </div>
+
+            <div class="footer-middle">
+            <h4>Navigation</h4>
+            <ul>
+            <li onclick="showSection('home')">Home</li>
+            <li onclick="showSection('about')">About</li>
+            <li onclick="showSection('skills')">Skills</li>
+            <li onclick="showSection('projects')">Projects</li>
+            <li onclick="showSection('contact')">Contact</li>
+            </ul>
+            </div>
+
+            <div class="footer-right">
+            <h4>Connect</h4>
+            <p>Email: quan@email.com</p>
+            <p>GitHub: github.com/quan</p>
+            <p>LinkedIn: linkedin.com/in/quan</p>
+            </div>
+
+            </div>
+
+            <div class="footer-bottom">
+            <p>© 2026 Quan Portfolio. All Rights Reserved.</p>
+            </div>
+
+        </footer>
+
+    </body>
 </html>
