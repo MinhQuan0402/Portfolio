@@ -4,7 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Starter HTML JS CSS</title>
+
+        <!-- Website Logo -->
+        <link rel="icon" type="image/x-icon" href="./images/MyLogo.png">
+
+        <!-- Title and External Resources -->
+        <title>My Portfolio</title>
         <link rel="stylesheet" href="style.css">
         <script src="main.js" defer></script>
     </head>
@@ -13,14 +18,16 @@
 
         <nav class="navbar">
 
-            <h2 class="logo">Quan</h2>
+            <a onclick="showSection('home'); updateActiveNavItem('home')" class="logo-link">
+                <img src="./images/MyLogo.png" class="logo">
+            </a>
 
             <ul class="nav-links">
-            <li><a onclick="showSection('home')">Home</a></li>
-            <li><a onclick="showSection('about')">About</a></li>
-            <li><a onclick="showSection('skills')">Skills</a></li>
-            <li><a onclick="showSection('projects')">Projects</a></li>
-            <li><a onclick="showSection('contact')">Contact</a></li>
+            <li class="nav-item active" data-section="home">Home</li>
+            <li class="nav-item" data-section="about">About</li>
+            <li class="nav-item" data-section="skills">Skills</li>
+            <li class="nav-item" data-section="projects">Projects</li>
+            <li class="nav-item" data-section="contact">Contact</li>
         </ul>
 
         </nav>
@@ -129,18 +136,20 @@
             <div class="footer-container">
 
             <div class="footer-left">
-            <h3>Quan</h3>
+            <a onclick="showSection('home'); updateActiveNavItem('home')" class="logo-link">
+                <img src="./images/MyLogo.png" class="logo">
+            </a>
             <p>Aspiring Game Developer & Programmer</p>
             </div>
 
             <div class="footer-middle">
             <h4>Navigation</h4>
-            <ul>
-            <li onclick="showSection('home')">Home</li>
-            <li onclick="showSection('about')">About</li>
-            <li onclick="showSection('skills')">Skills</li>
-            <li onclick="showSection('projects')">Projects</li>
-            <li onclick="showSection('contact')">Contact</li>
+            <ul class="footer-nav">
+            <li class="footer-nav-item" data-section="home">Home</li>
+            <li class="footer-nav-item" data-section="about">About</li>
+            <li class="footer-nav-item" data-section="skills">Skills</li>
+            <li class="footer-nav-item" data-section="projects">Projects</li>
+            <li class="footer-nav-item" data-section="contact">Contact</li>
             </ul>
             </div>
 
@@ -158,6 +167,6 @@
             </div>
 
         </footer>
-
+        <button id="backToTop">↑</button>
     </body>
 </html>
