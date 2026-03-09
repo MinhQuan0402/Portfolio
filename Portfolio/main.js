@@ -41,21 +41,33 @@ footerNavItems.forEach(item=>{
 const backToTop = document.getElementById("backToTop");
 
 window.addEventListener("scroll", function(){
-
-if(window.scrollY > 200){
-    backToTop.style.display = "flex";
-}
-else{
-    backToTop.style.display = "none";
-}
-
+    if(window.scrollY > 200){
+        backToTop.style.display = "flex";
+    }
+    else{
+        backToTop.style.display = "none";
+    }
 });
 
 backToTop.addEventListener("click", function(){
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
+    window.scrollTo(0,0);
 });
 
-});
+// Typewriter Effect
+const text = "Hello,\n I'm Minh Quan!";
+const typeCursor = document.getElementById("typeCursor");
+const textEl = document.getElementById("typewriter");
+let idx = 1;
+
+function typeWriter(){
+    textEl.innerText = text.slice(0, idx) + "|";
+    idx++; 
+    if(idx > text.length){
+        idx = 1;
+    }
+
+    let randomDelay = Math.random() * 200 + 100; // Random delay between 100ms and 300ms
+    setTimeout(typeWriter, randomDelay);
+}
+
+typeWriter();
