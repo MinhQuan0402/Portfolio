@@ -208,14 +208,43 @@ h1,h2,h3,h4{
     font-weight:bold;
 }
 
-.quick-intro{
-    width: 100%;
-    height: 100%;
-    padding: 40px 10%;
-    font-size:1.1rem;
-    line-height:1.7;
+.intro-container {
+    margin: 40px 5%;
+    padding: 20px;
+    border: 2px solid var(--primary-color);
+}
+
+.intro-container div {
+    float: left;
+    width: fit-content;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    margin-right: 20px;
+    border-radius: 4px;
+    text-align: start;
+}
+
+.intro-container p {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.intro-container h4 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: var(--primary-color);
-    text-align: center;
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
 }
 
 @keyframes fadeUp{
