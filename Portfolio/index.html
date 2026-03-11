@@ -48,9 +48,26 @@
                 but because it is fun to program."
                 <span class="quote-author">- Linus Torvalds</span>
                 </blockquote>
-            <button onclick="showSection('projects'); updateActiveNavItem('projects')">
-            View My Work
-            </button>
+            </div>
+        </div>
+        <div class="home-background-roller left">
+            <div class="scroll-track">
+                <div class="scroll-text"></div>
+                <div class="scroll-text"></div>
+            </div>
+            <div aria-hidden="true" class="scroll-track">
+                <div class="scroll-text"></div>
+                <div class="scroll-text"></div>
+            </div>
+        </div>
+        <div class="home-background-roller right">
+            <div class="scroll-track">
+                <div class="scroll-text"></div>
+                <div class="scroll-text"></div>
+            </div>
+            <div class="scroll-track">
+                <div class="scroll-text"></div>
+                <div class="scroll-text"></div>
             </div>
         </div>
         <div class="intro-container">
@@ -63,10 +80,129 @@
              With a strong foundation in programming and a passion for game design, 
              I am eager to contribute my skills to the gaming industry and bring innovative ideas to life...
             </h4>
-            <button onclick="showSection('about'); updateActiveNavItem('about')">
+            <button class="reveal" onclick="showSection('about'); updateActiveNavItem('about')">
             Read More
             </button>
-        </div>   
+            <div class="reveal">
+                <p>
+                    What could be my new missions in the gaming industry?
+                </p>
+                <p>
+                    What are the challenges I will face in this new journey? How can I overcome them?
+                </p>
+                <p>
+                    What inspiring me to pursue a career in game development?
+                </p>
+            </div>
+        </div>
+        <section class="skills-preview reveal">
+
+        <h2>Skills</h2>
+        <p class="skills-subtitle">
+        Technologies and tools I have experienced with.
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+            <img src="./images/icons/c++_logo.webp" alt="C++">
+            <p>C++</p>
+            </div>
+
+            <div class="skill-card">
+            <img src="./images/icons/unity-brands-solid-full.svg" alt="Unity">
+            <p>Unity</p>
+            </div>
+
+            <div class="skill-card">
+            <img src="./images/icons/opengl-logo-png-transparent.png" alt="OpenGL">
+            <p>OpenGL</p>
+            </div>
+
+            <div class="skill-card">
+            <img src="./images/icons/c-sharp-logo.png" alt="C#">
+            <p>C#</p>
+            </div>
+
+            <div class="skill-card">
+            <img src="./images/icons/blender-1-logo-svg-vector.svg" alt="Blender">
+            <p>Blender</p>
+            </div>
+
+            <div class="skill-card">
+            <img src="./images/icons/unreal-engine-icon.webp" alt="Unreal Engine">
+            <p>Unreal Engine</p>
+            </div>
+
+            <div class="skill-card">
+            <img src="./images/icons/html5-brands-solid-full.svg" alt="HTML">
+            <p>HTML</p>
+            </div>
+
+            <div class="skill-card">
+            <img src="./images/icons/css-brands-solid-full.svg" alt="CSS">
+            <p>CSS</p>
+            </div>
+
+            <div class="skill-card">
+            <img src="./images/icons/square-js-brands-solid-full.svg" alt="JavaScript">
+            <p>JavaScript</p>
+            </div>
+
+            <div class="skill-card">
+            <img src="./images/icons/logo-google-android-studio.svg" alt="Android Studio">
+            <p>Android Studio</p>
+            </div>
+
+        </div>
+        
+        <p>
+            How did I acquire these skills? What skills do I want to learn next? How can I apply these skills to create amazing games?
+        </p>
+        <button onclick="showSection('skills'); updateActiveNavItem('skills')">
+            Check Out My Skills
+        </button>
+
+        </section>
+        <section class="featured-projects">
+
+        <div class="section-header">
+            <h2>Featured Projects</h2>
+            <a onclick="showSection('projects'); updateActiveNavItem('projects')" class="view-all">
+                <span>View All</span>
+                <span class="arrow">→</span>
+            </a>
+        </div>
+
+        <div class="projects-grid reveal">
+
+            <div class="project-card">
+            <img src="images/project1.jpg" alt="Project 1">
+            <div class="project-info">
+                <h3>Physics Sandbox</h3>
+                <p>Interactive particle simulation exploring forces and physics systems.</p>
+            </div>
+            </div>
+
+            <div class="project-card">
+            <img src="images/project2.jpg" alt="Project 2">
+            <div class="project-info">
+                <h3>Enemy AI System</h3>
+                <p>Behavior-based AI system featuring state machines and dynamic combat.</p>
+            </div>
+            </div>
+
+            <div class="project-card">
+            <img src="images/project3.jpg" alt="Project 3">
+            <div class="project-info">
+                <h3>OpenGL Renderer</h3>
+                <p>Custom rendering pipeline with lighting and shader effects.</p>
+            </div>
+            </div>
+
+        </div>
+
+        </section>
         </section>
 
 
@@ -180,7 +316,7 @@
             <h4>Connect</h4>
             <div class="social-icons">
 
-            <a href="https://github.com/yourusername" target="_blank" class="social-icon">
+            <a href="https://github.com/MinhQuan0402" target="_blank" class="social-icon">
                 <img src="images/icons/github-brands-solid-full.svg" alt="GitHub">
             </a>
 

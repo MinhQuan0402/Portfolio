@@ -72,20 +72,53 @@ function typeWriter(){
 
 typeWriter();
 
-const revealElements = document.querySelectorAll(".reveal");
+const reveals = document.querySelectorAll(".reveal");
 
-function revealOnScroll(){
-    const windowHeight = window.innerHeight;
-    const revealPoint = 150;
-    revealElements.forEach(el=>{
-        const elementTop = el.getBoundingClientRect().top;
-        if(elementTop < windowHeight - revealPoint){
-            el.classList.add("active");
+const observer = new IntersectionObserver((entries) => {
+    
+    entries.forEach(entry => {
+        
+        if(entry.isIntersecting){
+            entry.target.classList.add("active");
         }
-        else{
-            el.classList.remove("active");
+        else {
+            entry.target.classList.remove("active");
         }
+
     });
+
+},{
+    threshold:0.2
+});
+
+reveals.forEach(el => observer.observe(el));
+
+function fillSideText(){
+
+    document.querySelectorAll(".scroll-text").forEach(container=>{
+
+        container.innerHTML = "";
+
+        const test = document.createElement("span");
+        test.innerText = "HOME";
+        container.appendChild(test);
+
+        const wordHeight = test.offsetHeight;
+        const stripHeight = container.closest(".home-background-roller").offsetHeight;
+
+        container.innerHTML = "";
+
+        const count = Math.ceil(stripHeight / wordHeight) + 3;
+
+        for(let i=0;i<count;i++){
+            const word = document.createElement("span");
+            word.innerText = "HOME";
+            container.appendChild(word);
+        }
+
+    });
+
 }
 
-window.addEventListener("scroll", revealOnScroll);
+fillSideText();
+window.addEventListener("resize", fillSideText);
