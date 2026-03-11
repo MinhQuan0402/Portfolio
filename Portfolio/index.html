@@ -279,13 +279,41 @@
 
         <!-- CONTACT -->
 
-        <section id="contact" class="section">
+        <section id="contact" class="section contact-section">
+            <div class="terminal">
 
-        <h1>Contact</h1>
+            <div class="terminal-header">
+                COMM TERMINAL
+            </div>
 
-        <p>Email: quan@email.com</p>
-        <p>GitHub: github.com/quan</p>
-        <p>LinkedIn: linkedin.com/in/quan</p>
+            <form action="https://formspree.io/f/mlgpbjja" method="POST">
+
+            <label>Pilot Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+            
+            <input type="hidden" name="_subject" value="Portfolio Contact Message">
+
+            <label>Transmission ID</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <label>Message Payload</label>
+            <textarea name="message" placeholder="Enter your message" rows="5" required></textarea>
+            
+            <input type="text" name="_gotcha" style="display:none">
+            
+            <div data-formspree-captcha></div>
+                
+            <button type="submit">
+                SEND TRANSMISSION
+            </button>
+
+            </form>
+
+            <div class="terminal-status" id="status">
+                STATUS: Awaiting input...
+            </div>
+
+            </div>
 
         </section>
 
@@ -320,15 +348,15 @@
                 <img src="images/icons/github-brands-solid-full.svg" alt="GitHub">
             </a>
 
-            <a href="https://linkedin.com" target="_blank" class="social-icon">
+            <a href="https://www.linkedin.com/in/nguyen-quan-8a31b217a/" target="_blank" class="social-icon">
                 <img src="images/icons/linkedin-in-brands-solid-full.svg" alt="LinkedIn">
             </a>
 
-            <a href="https://facebook.com" target="_blank" class="social-icon">
+            <a href="https://www.facebook.com/share/17N4FXkfNk/?mibextid=wwXIfr" target="_blank" class="social-icon">
                 <img src="images/icons/facebook-brands-solid-full.svg" alt="Facebook">
             </a>
 
-            <a href="https://instagram.com" target="_blank" class="social-icon">
+            <a href="https://www.instagram.com/ng._mq?igsh=dnBlejA4dTNvc3Aw&utm_source=qr" target="_blank" class="social-icon">
                 <img src="images/icons/instagram-brands-solid-full.svg" alt="Instagram">
             </a>
 
@@ -343,5 +371,6 @@
 
         </footer>
         <button id="backToTop">↑</button>
+        <script src="https://formspree.io/js/formbutton-v1.min.js"></script>
     </body>
 </html>

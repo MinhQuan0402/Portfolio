@@ -547,6 +547,84 @@ button:hover{
     font-size:18px;
 }
 
+.contact-section.active {
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.terminal {
+    width:500px;
+    border:2px solid #00ffcc;
+    padding:30px;
+    background:#050505;
+    box-shadow:0 0 20px rgba(0,255,200,0.3);
+}
+
+.terminal-header {
+    font-family: var(--header-font);
+    text-align:center;
+    font-size:22px;
+    color:#00ffcc;
+    margin-bottom:20px;
+    border-bottom:1px solid #00ffcc;
+    padding-bottom:10px;
+}
+
+label {
+    color:#aaa;
+    font-size:14px;
+    font-family: var(--header-font);
+}
+
+input, textarea {
+    width:100%;
+    background:black;
+    border:1px solid #333;
+    color:#00ffcc;
+    padding:10px;
+    margin:8px 0 18px 0;
+    font-family:inherit;
+}
+
+input:focus, textarea:focus{
+    outline:none;
+    border-color:#00ffcc;
+}
+
+.contact-section button{
+    width:100%;
+    padding:12px;
+    background:#00ffcc;
+    border:none;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.contact-section button:hover{
+    background:#00ddb3;
+}
+
+.terminal-status { 
+    margin-top:20px;
+    color:#00ffcc;
+    font-size:14px;
+}
+
+.terminal-status span {
+    color:#00ffcc;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+ 0%{opacity:0.5}
+ 50%{opacity:1}
+ 100%{opacity:0.5}
+}
+
 /* FOOTER */
 
 .footer{
@@ -616,8 +694,8 @@ button:hover{
     position:fixed;
     bottom:30px;
     right:30px;
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
 
     z-index: 1000;
 
@@ -628,7 +706,7 @@ button:hover{
     justify-content: center;
     align-items: center;
 
-    font-size:20px;
+    font-size:2.5em;
     cursor:pointer;
 
     display:none;

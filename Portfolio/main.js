@@ -122,3 +122,38 @@ function fillSideText(){
 
 fillSideText();
 window.addEventListener("resize", fillSideText);
+
+
+const form = document.querySelector("form");
+const statusMsg = document.getElementById("status");
+
+form.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    statusMsg.textContent = "STATUS: Sending transmission...";
+
+    const data = new FormData(form);
+
+    const response = await fetch(form.action,{
+        method: form.method,
+        body: data,
+        headers:{
+            'Accept':'application/json'
+        }
+    });
+
+    if(response.ok){
+        statusMsg.innerHTML = "STATUS: Transmission Sent <span>✓</span>";
+        form.reset();
+
+        // wait for 3 seconds before clearing the status message
+        setTimeout(() => {
+            statusMsg.textContent = "STATUS: Awaiting input...";
+        }, 1000);
+    }
+    else{
+        statusMsg.textContent = "STATUS: Transmission Failed";
+    }
+
+});
