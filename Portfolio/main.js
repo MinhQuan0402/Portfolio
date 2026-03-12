@@ -157,3 +157,17 @@ form.addEventListener("submit", async function(e){
     }
 
 });
+
+const textarea = document.getElementById("message");
+const wordCount = document.getElementById("wordCount");
+const charCount = document.getElementById("charCount");
+
+textarea.addEventListener("input", () => {
+
+    let words = textarea.value.trim().split(/\s+/).filter(w => w.length > 0);
+    let chars = textarea.value.length;
+
+    charCount.textContent = chars;
+    wordCount.textContent = words.length;
+
+});
