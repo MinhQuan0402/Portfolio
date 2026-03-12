@@ -170,4 +170,37 @@ textarea.addEventListener("input", () => {
     charCount.textContent = chars;
     wordCount.textContent = words.length;
 
+    if (chars > 0)
+    {
+        statusMsg.textContent = "STATUS: Typing..."
+    }
+    else
+    {
+        statusMsg.textContent = "STATUS: Awaiting input...";
+    }
+
 });
+
+function toggleItem(item){
+
+    item.classList.toggle("open");
+
+}
+
+const elements = document.querySelectorAll(
+".profile-card, .timeline-item, .achievement"
+);
+
+const interactionObv = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+
+    });
+
+});
+
+elements.forEach(el => interactionObv.observe(el));
