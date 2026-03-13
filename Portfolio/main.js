@@ -204,3 +204,32 @@ const interactionObv = new IntersectionObserver(entries => {
 });
 
 elements.forEach(el => interactionObv.observe(el));
+
+const aboutSection = document.querySelector("#about");
+const bars = document.querySelectorAll(".progress-fill");
+
+const observerAbt = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            bars.forEach(bar => {
+
+                const width = bar.dataset.width;
+                bar.style.width = width;
+            });
+
+        }
+        else
+        {
+            bars.forEach(bar => {
+                bar.style.width = 0;
+            });
+        }
+
+    });
+
+}, { threshold: 0.5 });
+
+observerAbt.observe(aboutSection);

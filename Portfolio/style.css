@@ -23,7 +23,7 @@
 
 :root{
     --primary-color: #000000;
-    --secondary-color: #ffffff;
+    --secondary-color: #ddd;
     --tertiary-color: #e94b3c;
     --quatiary-color: #f4dfc4;
     --header-font: "Bungee", sans-serif;
@@ -520,80 +520,176 @@ button:hover{
 
 .about{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 5vw 5vw;
+}
+
+.profile-ui{
+    background-color: var(--primary-color);
+    width: 100%;
     margin:auto;
-    padding:100px 40px;
+    padding: 40px;
+    border:1px solid var(--secondary-color);
+
+    display: flex;
+    flex-direction: column;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.scanlines {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:200%;
+    pointer-events:none;
+
+    background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.5) 0px,
+    rgba(255,255,255,0.5) 1px,
+    transparent 1px,
+    transparent 10px
+    );
+
+    animation:scanlines 6s linear infinite;
+}
+
+@keyframes scanlines{
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(-50%);
+}
+}
+
+.profile-title{
+    text-align:start;
+    font-size: clamp(10px, 2.5vw, 25px);
+    margin-bottom:30px;
+    letter-spacing:3px;
+    color: var(--secondary-color);
+}
+
+.profile-grid{
+    width: 100%;
+    height: 100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:auto auto;
+}
+
+.panel{
+    border: 1px solid #555;
+    padding:20px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.panel h3{
+    margin-bottom:15px;
+    font-size: clamp(10px, 2vw, 15px);
+    letter-spacing:2px;
+    color: var(--secondary-color)
+}
+
+.avatar{
+    width:120px;
+    height:120px;
+    border: 1px solid #555;
+    overflow:hidden;
+}
+
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    image-rendering:pixelated;
+}
+
+.stat{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-between;
+    margin:6px 0;
+    padding-bottom:4px;
+}
+
+.skill{
+    color: var(--secondary-color);
+    margin-bottom:15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.progress-bar{
+    width:100%;
+    height:6px;
+    background:#222;
+    border:1px solid #444;
+}
+
+.progress-fill{
+    height:100%;
+    background: var(--secondary-color);
+    width:0;
+    transition:width 1.5s ease;
 }
 
 .profile{
+    grid-column:1;
+    grid-row:1;
 
-    display:grid;
-    grid-template-columns:250px 1fr;
-    grid-template-rows:auto auto;
-
-    gap:30px;
-
-    border:1px solid #ddd;
-    padding:40px;
+    display: flex;
+    flex-direction: column;
 }
 
+.profile > div {
+    width: 100%;
+    height: 100%;
 
-.profile-picture img{
-    width:200px;
-    border-radius:8px;
+    display: flex;
+    flex-direction: row;
+
+    text-align: left;
 }
-
-
-.profile-info{
-    align-self:center;
-}
-
 
 .stats{
     grid-column:1;
+    grid-row:2;
 }
-
 
 .skills{
     grid-column:2;
+    grid-row:1 / span 2;
 }
 
-
-.stat{
-    margin-bottom:15px;
+.infos {
+    flex: 2;
+    margin-left: 10px;
 }
 
-.bar{
-    height:10px;
-    background:#eee;
-    margin-top:4px;
+.info {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 5px;
 }
 
-.bar div{
-    height:100%;
-    background:black;
+.info span:nth-child(2) {
+    border: 1px solid #555;
+    padding: clamp(2px, 0.5vw, 5px);
 }
 
 /* SKILLS */
-
-.skill{
-    margin:25px auto;
-    width:320px;
-    text-align:left;
-}
-
-.bar{
-    background: var(--secondary-color);
-    height:8px;
-    border-radius:4px;
-    margin-top:5px;
-}
-
-.progress{
-    height:8px;
-    background: var(--primary-color);
-    border-radius:4px;
-}
 
 /* percentages */
 
@@ -904,7 +1000,7 @@ label {
 /* This is for mobile devices */
 @media(max-width:768px) {
 
-
+    
     .section-header {
         flex-direction: column;
     }
@@ -926,6 +1022,24 @@ label {
 
     .skill{
         width:100%;
+    }
+
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+
+    .skills{
+        grid-column:auto;
+        grid-row:auto;
+    }
+
+    .profile > div {
+        flex-direction: column;
+    }
+
+    .infos {
+        margin-top: 10px;
+        margin-left: 0;
     }
 }
 
