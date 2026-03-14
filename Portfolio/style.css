@@ -223,7 +223,7 @@ h1,h2,h3,h4{
     padding: 5%;
 
     width: 100%;
-    height: fit-content;
+    height: 100vh;
 
     background-image:
         linear-gradient(to right, rgba(0,0,0,1.0), rgba(0,0,0,0.8), rgba(0,0,0,0.0)),
@@ -678,7 +678,7 @@ button:hover{
 
 .profile-title{
     text-align:start;
-    font-size: clamp(10px, 2.5vw, 25px);
+    font-size: clamp(10px, 3vw, 25px);
     margin-bottom:30px;
     letter-spacing:3px;
     color: var(--secondary-color);
@@ -697,11 +697,13 @@ button:hover{
     padding:20px;
     background: var(--primary-color);
     color: var(--secondary-color);
+
+    font-size: clamp(10px, 2vw, 20px);
 }
 
 .panel h3{
     margin-bottom:15px;
-    font-size: clamp(10px, 2vw, 15px);
+    font-size: clamp(10px, 2vw, 20px);
     letter-spacing:2px;
     color: var(--secondary-color)
 }
@@ -734,13 +736,12 @@ button:hover{
 
     display: flex;
     flex-direction: column;
-    justify-content: start;
     align-items: start;
 }
 
 .progress-bar{
     width:100%;
-    height:6px;
+    height: clamp(6px, 2vw, 12px);
     background:#222;
     border:1px solid #444;
 }
@@ -777,7 +778,7 @@ button:hover{
 
 .skills{
     grid-column:2;
-    grid-row:1 / span 2;
+    grid-row: 1;
 }
 
 .hobbies {
@@ -809,6 +810,46 @@ button:hover{
 .info span:nth-child(2) {
     border: 1px solid #555;
     padding: clamp(2px, 0.5vw, 5px);
+}
+
+.timeline-game{
+    color:white;
+}
+
+.game-world{
+    position:relative;
+    height:120px;
+    border-top:2px solid white;
+    margin-top:40px;
+    overflow:hidden;
+}
+
+.checkpoint{
+    position:absolute;
+    border:1px solid white;
+    padding:5px 10px;
+    background:black;
+}
+
+.checkpoint:nth-child(2){ left:200px; }
+.checkpoint:nth-child(3){ left:400px; }
+.checkpoint:nth-child(4){ left:600px; }
+.checkpoint:nth-child(5){ left:800px; }
+
+#player{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:20px;
+    height:20px;
+    background:white;
+}
+
+#storyBox{
+    margin-top:30px;
+    border:1px solid white;
+    padding:20px;
+    min-height:60px;
 }
 
 /* SKILLS */
@@ -976,9 +1017,9 @@ label {
 }
 
 @keyframes pulse{
- 0%{opacity:0.5}
- 50%{opacity:1}
- 100%{opacity:0.5}
+    0%{opacity:0.5}
+    50%{opacity:1}
+    100%{opacity:0.5}
 }
 
 .contact-info {
@@ -1147,12 +1188,8 @@ label {
     }
 
     .profile-grid{
-        grid-template-columns:1fr;
-    }
-
-    .skills{
-        grid-column:auto;
-        grid-row:auto;
+        display: flex;
+        flex-direction: column;
     }
 
     .profile > div {

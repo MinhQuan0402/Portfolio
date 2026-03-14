@@ -2,10 +2,12 @@ const sections = document.querySelectorAll(".section");
 const navItems = document.querySelectorAll(".nav-item");
 const footerNavItems = document.querySelectorAll(".footer-nav-item");
 
-const viewBtn = document.getElementById("viewProfileBtn");
+const viewProfileBtn = document.getElementById("viewProfileBtn");
+const viewTimelineBtn = document.getElementById("timelineGameBtn");
 
 const menu = document.getElementById("main-menu");
 const profile = document.getElementById("profile-ui");
+const timelime = document.getElementById("timeline-game");
 
 function showSection(sectionId){
     sections.forEach(section=>{
@@ -216,8 +218,9 @@ const interactionObv = new IntersectionObserver(entries => {
 
 elements.forEach(el => interactionObv.observe(el));
 
-viewBtn.addEventListener("click", () => {
-    viewBtn.classList.add("loading");
+viewProfileBtn.addEventListener("click", () => {
+    viewProfileBtn.classList.add("loading");
+    viewTimelineBtn.classList.add("hidden");
 
     // fake loading delay
     setTimeout(() => {
@@ -226,6 +229,18 @@ viewBtn.addEventListener("click", () => {
         animateStats();
     }, 2000);
 
+});
+
+viewTimelineBtn.addEventListener("click", () => {
+    viewTimelineBtn.classList.add("loading");
+    viewProfileBtn.classList.add("hidden");
+
+    // fake loading delay
+    setTimeout(() => {
+        menu.classList.add("hidden");
+        timelime.classList.remove("hidden");
+        animateStats();
+    }, 2000);
 });
 
 function animateStats(){
@@ -245,8 +260,12 @@ function animateStats(){
 function resetProfileUI(){
     menu.classList.remove("hidden");
     profile.classList.add("hidden");
+    timelime.classList.add("hidden");
 
-    viewBtn.classList.remove("loading");
+    viewProfileBtn.classList.remove("loading");
+    viewTimelineBtn.classList.remove("loading");
+    viewProfileBtn.classList.remove("hidden");
+    viewTimelineBtn.classList.remove("hidden");
 }
 
 function resetStatsBar(){
@@ -256,3 +275,30 @@ function resetStatsBar(){
         bar.style.width = 0;
     });
 }
+
+const player = document.getElementById("player");
+const checkpoints = document.querySelectorAll(".checkpoint");
+const storyBox = document.getElementById("storyBox");
+
+let x = 0;
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="ArrowRight") x+=10;
+    if(e.key==="ArrowLeft") x-=10;
+
+    player.style.left = x + "px";
+
+    checkpoints.forEach(cp=>{
+
+        let cpX = cp.offsetLeft;
+
+        if(Math.abs(x - cpX) < 10){
+
+            storyBox.innerText = cp.dataset.story;
+
+        }
+
+    });
+
+});
