@@ -2,6 +2,11 @@ const sections = document.querySelectorAll(".section");
 const navItems = document.querySelectorAll(".nav-item");
 const footerNavItems = document.querySelectorAll(".footer-nav-item");
 
+const viewBtn = document.getElementById("viewProfileBtn");
+
+const menu = document.getElementById("main-menu");
+const profile = document.getElementById("profile-ui");
+
 function showSection(sectionId){
     sections.forEach(section=>{
         section.classList.remove("active");
@@ -11,6 +16,12 @@ function showSection(sectionId){
 
     // scroll back to top
     window.scrollTo(0,0);
+
+    // if leaving about page → reset menu
+    if(sectionId !== "about"){
+        resetProfileUI();
+        resetStatsBar();
+    }
 }
 
 function updateActiveNavItem(sectionId){
@@ -205,31 +216,43 @@ const interactionObv = new IntersectionObserver(entries => {
 
 elements.forEach(el => interactionObv.observe(el));
 
-const aboutSection = document.querySelector("#about");
-const bars = document.querySelectorAll(".progress-fill");
+viewBtn.addEventListener("click", () => {
+    viewBtn.classList.add("loading");
 
-const observerAbt = new IntersectionObserver(entries => {
+    // fake loading delay
+    setTimeout(() => {
+        menu.classList.add("hidden");
+        profile.classList.remove("hidden");
+        animateStats();
+    }, 2000);
 
-    entries.forEach(entry => {
+});
 
-        if(entry.isIntersecting){
+function animateStats(){
+    const bars = document.querySelectorAll(".progress-fill");
 
-            bars.forEach(bar => {
+    let index = 0;
+    bars.forEach(bar=>{
+        const value = bar.dataset.width;
+        setTimeout(() => {
+            bar.style.width = value;
+        }, 1000 + 500 * index);
 
-                const width = bar.dataset.width;
-                bar.style.width = width;
-            });
-
-        }
-        else
-        {
-            bars.forEach(bar => {
-                bar.style.width = 0;
-            });
-        }
-
+        index++;
     });
+}
 
-}, { threshold: 0.5 });
+function resetProfileUI(){
+    menu.classList.remove("hidden");
+    profile.classList.add("hidden");
 
-observerAbt.observe(aboutSection);
+    viewBtn.classList.remove("loading");
+}
+
+function resetStatsBar(){
+    const bars = document.querySelectorAll(".progress-fill");
+
+    bars.forEach(bar=>{
+        bar.style.width = 0;
+    });
+}

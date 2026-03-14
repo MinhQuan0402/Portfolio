@@ -209,9 +209,23 @@
         <!-- ABOUT -->
 
         <section id="about" class="section about">
-            <div class="profile-ui">
+            <!-- MAIN MENU -->
+            <div id="main-menu" class=" screen menu-screen">
+                <h1 class="menu-title">SYSTEM TERMINAL</h1>
+                <button id="viewProfileBtn" class="menu-btn">
+                    <span class="btn-text">▶ View My Profile</span>
 
-                <h2 class="profile-title">PROFILE</h2>
+                    <div class="btn-loader">
+                        <div class="btn-progress"></div>
+                    </div>
+                </button>
+                <div class="scanlines"></div>
+            </div>
+
+            <!-- PROFILE UI -->
+            <div id="profile-ui" class="screen profile-ui hidden">
+
+                <h2 class="profile-title">PLAYER PROFILE</h2>
 
                 <div class="profile-grid">
 
@@ -237,8 +251,20 @@
                             </span>
                         </div>
                         <div class="info">
-                            <span>Role:</span>
+                            <span>Class:</span>
                             <span>Game Developer</span>
+                        </div>
+                        <div class="info">
+                            <span>Guild:</span>
+                            <span>Nanyang Polytechnic</span>
+                        </div>
+                        <div class="info">
+                            <span>Level:</span>
+                            <span>Year 3</span>
+                        </div>
+                        <div class="info">
+                            <span>Specialization:</span>
+                            <span>Gameplay Programming</span>
                         </div>
                     </div>
                 </div>
@@ -249,17 +275,17 @@
                 <!-- STATS -->
                 <div class="panel stats">
 
-                <h3>STATS</h3>
+                <h3>CORE STATS</h3>
 
                 <div class="stat">
-                <span>C++</span>
+                <span>Logic</span>
                 <div class="progress-bar">
                 <div class="progress-fill" data-width="90%"></div>
                 </div>
                 </div>
 
                 <div class="stat">
-                <span>C#</span>
+                <span>Creativity</span>
                 <div class="progress-bar">
                 <div class="progress-fill" data-width="85%"></div>
                 </div>
@@ -273,16 +299,23 @@
                 </div>
 
                 <div class="stat">
-                <span>OpenGL</span>
+                <span>Problem Solv</span>
                 <div class="progress-bar">
                 <div class="progress-fill" data-width="80%"></div>
                 </div>
                 </div>
 
                 <div class="stat">
-                <span>JavaScript</span>
+                <span>Debugging</span>
                 <div class="progress-bar">
                 <div class="progress-fill" data-width="75%"></div>
+                </div>
+                </div>
+
+                <div class="stat">
+                <span>Optimisation</span>
+                <div class="progress-bar">
+                <div class="progress-fill" data-width="85%"></div>
                 </div>
                 </div>
 
@@ -300,6 +333,15 @@
                 <div class="skill">AI Behaviour Systems</div>
                 <div class="skill">Tool Development</div>
 
+                </div>
+
+                <div class="panel hobbies">
+                <h3>SIDE QUESTS</h3>
+
+                <div class="hobby">Game Development</div>
+                <div class="hobby">Listening to Game OST</div>
+                <div class="hobby">Learning Graphics Programming</div>
+                <div class="hobby">Game UI Design</div>
                 </div>
 
                 </div>
