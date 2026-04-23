@@ -84,6 +84,7 @@ h1,h2,h3,h4{
     list-style:none;
     display:flex;
     gap:30px;
+    font-size: clamp(0.9rem, 2.5vw, 1.5rem);
 }
 
 .nav-item{
@@ -895,25 +896,25 @@ button:hover{
 
 @keyframes floatInAndOutLeft {
     0% {
-        transform: translate(-1500px);
+        transform: translate(-1700px);
     }
     50%, 70% {
         transform: translate(0);
     }
     100% {
-        transform: translate(1500px);
+        transform: translate(1700px);
     }
 }
 
 @keyframes floatInAndOutRight {
     0% {
-        transform: translate(1500px);
+        transform: translate(1700px);
     }
     50%, 70% {
         transform: translate(0);
     }
     100% {
-        transform: translate(-1500px);
+        transform: translate(-1700px);
     }
 }
 
