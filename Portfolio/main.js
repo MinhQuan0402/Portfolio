@@ -7,7 +7,9 @@ const viewTimelineBtn = document.getElementById("timelineGameBtn");
 
 const menu = document.getElementById("main-menu");
 const profile = document.getElementById("profile-ui");
-const timelime = document.getElementById("timeline-game");
+const timeline = document.getElementById("timeline-game");
+
+const backToMenuBtns = document.querySelectorAll(".back-btn");
 
 function showSection(sectionId){
     sections.forEach(section=>{
@@ -219,28 +221,46 @@ const interactionObv = new IntersectionObserver(entries => {
 elements.forEach(el => interactionObv.observe(el));
 
 viewProfileBtn.addEventListener("click", () => {
-    viewProfileBtn.classList.add("loading");
     viewTimelineBtn.classList.add("hidden");
-
-    // fake loading delay
+    viewProfileBtn.classList.add("loading");
     setTimeout(() => {
-        menu.classList.add("hidden");
-        profile.classList.remove("hidden");
-        animateStats();
-    }, 2000);
-
+        loadingAnimation(viewProfileBtn, profile);
+    }, 1500); // Add a small delay to ensure the loading class is applied
 });
 
 viewTimelineBtn.addEventListener("click", () => {
-    viewTimelineBtn.classList.add("loading");
     viewProfileBtn.classList.add("hidden");
-
-    // fake loading delay
+    viewTimelineBtn.classList.add("loading");
     setTimeout(() => {
+        loadingAnimation(viewTimelineBtn, timeline);
+    }, 1500); // Add a small delay to ensure the loading class is applied   
+});
+
+let progressWidth = 0;
+function loadingAnimation(btn, classToShow){
+    const progress = btn.querySelector(".btn-progress");
+    if (progressWidth < 100)
+    {
+        progressWidth++;
+        progress.style.width = progressWidth + "%";
+        let randomDelay = Math.random() * 90 + 10; // Random delay between 10ms and 100ms
+        setTimeout(() => loadingAnimation(btn, classToShow), randomDelay);
+    }
+    else
+    {
+        progressWidth = 0;
+        progress.style.width = "0%";
         menu.classList.add("hidden");
-        timelime.classList.remove("hidden");
+        classToShow.classList.remove("hidden");
         animateStats();
-    }, 2000);
+    }
+}
+
+backToMenuBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        resetProfileUI();
+        resetStatsBar();
+    });
 });
 
 function animateStats(){
@@ -260,7 +280,7 @@ function animateStats(){
 function resetProfileUI(){
     menu.classList.remove("hidden");
     profile.classList.add("hidden");
-    timelime.classList.add("hidden");
+    timeline.classList.add("hidden");
 
     viewProfileBtn.classList.remove("loading");
     viewTimelineBtn.classList.remove("loading");
@@ -279,24 +299,114 @@ function resetStatsBar(){
 const player = document.getElementById("player");
 const checkpoints = document.querySelectorAll(".checkpoint");
 const storyBox = document.getElementById("storyBox");
+const world = document.querySelector(".game-world");
 
 let x = 0;
+
+const timelineData = [
+    {
+        x: 200,
+        title: "2017 — Boon Lay Garden Primary",
+        description: "First exposure to computers and programming.",
+        achievements: [
+            "Learned basic computer logic",
+            "Making simple games with Scratch"
+        ],
+        button: {
+            text: "View Projects",
+            target: "projects"
+        }
+    },
+    {
+        x: 400,
+        title: "2021 — Yuan Ching Secondary",
+        description: "Started learning programming fundamentals.",
+        achievements: [
+            "Learned deeper about programming concepts",
+            "Built a 2D action game in Scratch to educate about Principles of Accounting",
+            "Gained passion for game development"
+        ],
+        button: {
+            text: "View Projects",
+            target: "projects"
+        }
+    },
+    {
+        x: 600,
+        title: "2024 — Nanyang Polytechnic",
+        description: "Enrolled in Game Development course.",
+        achievements: [
+            "Learned Unity Engine",
+            "Built gameplay systems",
+            "Worked on team projects"
+        ],
+        button: {
+            text: "View Projects",
+            target: "projects"
+        }
+    },
+    {
+        x: 800,
+        title: "Game Development Growth",
+        description: "Focused on core game programming.",
+        achievements: [
+            "Gameplay Programming",
+            "Debugging & Optimization",
+            "Physics Systems"
+        ],
+        button: {
+            text: "View Skills",
+            target: "skills"
+        }
+    }
+];
+
+timelineData.forEach(data => {
+
+    const cp = document.createElement("div");
+    cp.classList.add("checkpoint");
+    cp.style.left = data.x + "px";
+    cp.innerText = data.title.split("—")[0];
+
+    world.appendChild(cp);
+
+});
+
+function showStory(data){
+
+    const storyBox = document.getElementById("storyBox");
+
+    storyBox.innerHTML = `
+        <h3>${data.title}</h3>
+        <p>${data.description}</p>
+
+        <div class="achievements">
+            ${data.achievements.map(a => `<div>✓ ${a}</div>`).join("")}
+        </div>
+
+        <button class="story-btn" data-target="${data.button.target}">
+            ▶ ${data.button.text}
+        </button>
+    `;
+
+}
 
 document.addEventListener("keydown",(e)=>{
 
     if(e.key==="ArrowRight") x+=10;
     if(e.key==="ArrowLeft") x-=10;
 
+    if(x < 0) x = 0;
+
+    const maxX = document.querySelector(".game-world").offsetWidth - player.offsetWidth;
+    if(x > maxX) x = maxX;
+
     player.style.left = x + "px";
 
-    checkpoints.forEach(cp=>{
+    timelineData.forEach(data => {
 
-        let cpX = cp.offsetLeft;
-
-        if(Math.abs(x - cpX) < 10){
-
-            storyBox.innerText = cp.dataset.story;
-
+        if(Math.abs(x - data.x) < 15){
+            showStory(data);
         }
 
     });

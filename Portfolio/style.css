@@ -84,7 +84,7 @@ h1,h2,h3,h4{
     list-style:none;
     display:flex;
     gap:30px;
-    font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.9rem, 2vw, 1.5rem);
 }
 
 .nav-item{
@@ -558,6 +558,8 @@ button:hover{
 }
 
 .menu-btn{
+    width: clamp(150px, 30vw, 400px);
+    height:clamp(40px, 5vw, 60px);
     position:relative;
     overflow:hidden;
     padding:12px 28px;
@@ -567,7 +569,7 @@ button:hover{
     cursor:pointer;
     font-size:16px;
 
-    transition: width 1.5s ease;
+    transition: width 1.5s ease, transform 1.5s ease;
 }
 
 .menu-btn:hover {
@@ -581,6 +583,24 @@ button:hover{
 
 .menu-btn.loading {
     width: 90%;
+}
+
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+    padding:8px 16px;
+    border:1px solid var(--secondary-color);
+    background:var(--primary-color);
+    color:var(--secondary-color);
+    cursor:pointer;
+    font-size:14px;
+    z-index:10;
+}
+
+.back-btn:hover{
+    background:var(--secondary-color);
+    color:var(--primary-color);
 }
 
 .btn-loader{
@@ -604,43 +624,6 @@ button:hover{
 
 .menu-btn.loading .btn-loader{
     display:block;
-}
-
-.menu-btn.loading .btn-progress{
-    animation:loadBar 1.5s linear forwards;
-}
-
-@keyframes loadBar{
-
-    0%{width:0%;}
-    100%{width:100%;}
-
-}
-
-.loading-screen{
-    justify-content:center;
-    align-items:center;
-}
-
-.loading-bar{
-    width:250px;
-    height:6px;
-    border:1px solid var(--secondary-color);
-    margin-top:15px;
-}
-
-.loading-fill{
-    height:100%;
-    width:0%;
-    background:var(--secondary-color);
-    animation:load 2s linear forwards;
-}
-
-@keyframes load{
-
-    0%{width:0%;}
-    100%{width:100%;}
-
 }
 
 .profile-ui{
@@ -675,14 +658,6 @@ button:hover{
     100%{
         transform:translateY(-50%);
     }
-}
-
-.profile-title{
-    text-align:start;
-    font-size: clamp(10px, 3vw, 25px);
-    margin-bottom:30px;
-    letter-spacing:3px;
-    color: var(--secondary-color);
 }
 
 .profile-grid{
@@ -832,25 +807,54 @@ button:hover{
     background:black;
 }
 
-.checkpoint:nth-child(2){ left:200px; }
-.checkpoint:nth-child(3){ left:400px; }
-.checkpoint:nth-child(4){ left:600px; }
-.checkpoint:nth-child(5){ left:800px; }
-
 #player{
     position:absolute;
     bottom:0;
     left:0;
     width:20px;
     height:20px;
-    background:white;
+    background:var(--secondary-color);
 }
 
 #storyBox{
     margin-top:30px;
-    border:1px solid white;
+    border:1px solid var(--secondary-color);
     padding:20px;
     min-height:60px;
+}
+
+.story-box{
+    border:1px solid var(--secondary-color);
+    padding:20px;
+    margin-top:20px;
+    font-family:monospace;
+}
+
+.achievements{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-top:10px;
+    margin: auto;
+    align-items: start;
+}
+
+.achievements div{
+    margin-bottom:5px;
+}
+
+.story-btn{
+    margin-top:15px;
+    padding:8px 14px;
+    border:1px solid var(--secondary-color);
+    background:var(--secondary-color);
+    color:var(--primary-color);
+    cursor:pointer;
+}
+
+.story-btn:hover{
+    background:var(--primary-color);
+    color:var(--secondary-color);
 }
 
 /* SKILLS */
