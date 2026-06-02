@@ -583,6 +583,7 @@ button:hover{
 
 .menu-btn.loading {
     width: 90%;
+    cursor: default;
 }
 
 .back-btn{

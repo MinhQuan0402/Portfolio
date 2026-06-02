@@ -203,7 +203,7 @@ function toggleItem(item){
 }
 
 const elements = document.querySelectorAll(
-".profile-card, .timeline-item, .achievement"
+    ".profile-card, .timeline-item, .achievement"
 );
 
 const interactionObv = new IntersectionObserver(entries => {
@@ -242,22 +242,24 @@ function loadingAnimation(btn, classToShow){
     if (progressWidth < 100)
     {
         progressWidth++;
+        console.log(progressWidth);
         progress.style.width = progressWidth + "%";
         let randomDelay = Math.random() * 90 + 10; // Random delay between 10ms and 100ms
         setTimeout(() => loadingAnimation(btn, classToShow), randomDelay);
     }
     else
     {
-        progressWidth = 0;
         progress.style.width = "0%";
         menu.classList.add("hidden");
         classToShow.classList.remove("hidden");
+        btn.classList.remove("loading");
         animateStats();
     }
 }
 
 backToMenuBtns.forEach(btn => {
     btn.addEventListener("click", () => {
+        progressWidth = 0;
         resetProfileUI();
         resetStatsBar();
     });
@@ -391,14 +393,15 @@ function showStory(data){
 
 }
 
+const step = 20;
 document.addEventListener("keydown",(e)=>{
 
-    if(e.key==="ArrowRight") x+=10;
-    if(e.key==="ArrowLeft") x-=10;
+    if(e.key==="ArrowRight") x += step;
+    if(e.key==="ArrowLeft") x -= step;
 
     if(x < 0) x = 0;
 
-    const maxX = document.querySelector(".game-world").offsetWidth - player.offsetWidth;
+    const maxX = world.offsetWidth - player.offsetWidth;
     if(x > maxX) x = maxX;
 
     player.style.left = x + "px";
