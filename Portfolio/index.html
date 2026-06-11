@@ -1,547 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/MyLogo.png">
+    <title>Minh Quan — Game Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- Website Logo -->
-        <link rel="icon" type="image/x-icon" href="./images/MyLogo.png">
-
-        <!-- Title and External Resources -->
-        <title>My Portfolio</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="main.js" defer></script>
-    </head>
-
-    <body>
-
-        <nav class="navbar">
-
-            <a onclick="showSection('home'); updateActiveNavItem('home')" class="logo-link">
-                <img src="./images/MyLogo.png" class="logo">
-            </a>
-
-            <ul class="nav-links">
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a class="logo-link" onclick="showSection('home'); updateActiveNav('home')">
+            <img src="./images/MyLogo.png" class="logo" alt="Logo">
+        </a>
+        <ul class="nav-links">
             <li class="nav-item active" data-section="home">Home</li>
             <li class="nav-item" data-section="about">About</li>
+            <li class="nav-item" data-section="education">Education</li>
             <li class="nav-item" data-section="skills">Skills</li>
             <li class="nav-item" data-section="projects">Projects</li>
             <li class="nav-item" data-section="contact">Contact</li>
         </ul>
+    </nav>
 
-        </nav>
 
+    <!-- ════════════════════ HOME ════════════════════ -->
+    <section id="home" class="section active">
 
-        <!-- HOME -->
-
-        <section id="home" class="section active">
-        <div class="home-intro">
-            <h1 id="typewriter"></h1>
-            <p class="tagline">
-                Designing gameplay systems that bring virtual worlds to life.
-            </p>
-            <div class="home-intro-content">
-                <blockquote class="quote">
-                "Most good programmers do programming not because they expect 
-                to get paid or get adulation by the public, 
-                but because it is fun to program."
-                <span class="quote-author">- Linus Torvalds</span>
+        <!-- Hero -->
+        <div class="home-hero">
+            <h1 id="typewriter" class="hero-title"></h1>
+            <p class="hero-tagline">Designing gameplay systems that bring virtual worlds to life.</p>
+            <div class="hero-footer">
+                <blockquote class="hero-quote">
+                    "Most good programmers do programming not because they expect to get paid
+                    or get adulation by the public, but because it is fun to program."
+                    <span class="hero-quote-author">— Linus Torvalds</span>
                 </blockquote>
             </div>
         </div>
-        <div class="home-background-roller left">
-            <div class="scroll-track">
-                <div class="scroll-text"></div>
-                <div class="scroll-text"></div>
-            </div>
-            <div aria-hidden="true" class="scroll-track">
-                <div class="scroll-text"></div>
-                <div class="scroll-text"></div>
-            </div>
+
+        <!-- Side Rollers -->
+        <div class="roller roller-left" aria-hidden="true">
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
         </div>
-        <div class="home-background-roller right">
-            <div class="scroll-track">
-                <div class="scroll-text"></div>
-                <div class="scroll-text"></div>
-            </div>
-            <div class="scroll-track">
-                <div class="scroll-text"></div>
-                <div class="scroll-text"></div>
-            </div>
-        </div>
-        <div class="intro-container">
-            <div>
-                <p>SAME PASSION.</p>
-                <p>NEW MISSION.</p>
-            </div>
-            <h4 class="reveal">
-            As an aspiring game developer, I am dedicated to creating immersive and engaging gaming experiences.
-             With a strong foundation in programming and a passion for game design, 
-             I am eager to contribute my skills to the gaming industry and bring innovative ideas to life...
-            </h4>
-            <button class="reveal" onclick="showSection('about'); updateActiveNavItem('about')">
-            Read More
-            </button>
-            <div class="reveal">
-                <p>
-                    What could be my new missions in the gaming industry?
-                </p>
-                <p>
-                    What are the challenges I will face in this new journey? How can I overcome them?
-                </p>
-                <p>
-                    What inspiring me to pursue a career in game development?
-                </p>
-            </div>
-        </div>
-        <section class="skills-preview reveal">
-
-        <h2>Skills</h2>
-        <p class="skills-subtitle">
-        Technologies and tools I have experienced with.
-        </p>
-
-        <div class="skills-grid">
-
-            <div class="skill-card">
-            <img src="./images/icons/c++_logo.webp" alt="C++">
-            <p>C++</p>
-            </div>
-
-            <div class="skill-card">
-            <img src="./images/icons/unity-brands-solid-full.svg" alt="Unity">
-            <p>Unity</p>
-            </div>
-
-            <div class="skill-card">
-            <img src="./images/icons/opengl-logo-png-transparent.png" alt="OpenGL">
-            <p>OpenGL</p>
-            </div>
-
-            <div class="skill-card">
-            <img src="./images/icons/c-sharp-logo.png" alt="C#">
-            <p>C#</p>
-            </div>
-
-            <div class="skill-card">
-            <img src="./images/icons/blender-1-logo-svg-vector.svg" alt="Blender">
-            <p>Blender</p>
-            </div>
-
-            <div class="skill-card">
-            <img src="./images/icons/unreal-engine-icon.webp" alt="Unreal Engine">
-            <p>Unreal Engine</p>
-            </div>
-
-            <div class="skill-card">
-            <img src="./images/icons/html5-brands-solid-full.svg" alt="HTML">
-            <p>HTML</p>
-            </div>
-
-            <div class="skill-card">
-            <img src="./images/icons/css-brands-solid-full.svg" alt="CSS">
-            <p>CSS</p>
-            </div>
-
-            <div class="skill-card">
-            <img src="./images/icons/square-js-brands-solid-full.svg" alt="JavaScript">
-            <p>JavaScript</p>
-            </div>
-
-            <div class="skill-card">
-            <img src="./images/icons/logo-google-android-studio.svg" alt="Android Studio">
-            <p>Android Studio</p>
-            </div>
-
-        </div>
-        
-        <p>
-            How did I acquire these skills? What skills do I want to learn next? How can I apply these skills to create amazing games?
-        </p>
-        <button onclick="showSection('skills'); updateActiveNavItem('skills')">
-            Check Out My Skills
-        </button>
-
-        </section>
-        <section class="featured-projects">
-
-        <div class="section-header">
-            <h1>Featured Projects</h1>
-            <a onclick="showSection('projects'); updateActiveNavItem('projects')" class="view-all">
-                <span>View All</span>
-                <span class="arrow">→</span>
-            </a>
+        <div class="roller roller-right" aria-hidden="true">
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
+            <div class="roller-track"><div class="roller-text"></div><div class="roller-text"></div></div>
         </div>
 
-        <div class="projects-grid reveal">
-
-            <div class="project-card">
-            <img src="./images/simworld-2026-logo-on-bg.jpg" alt="Project 1">
-            <div class="project-info">
-                <h3>Physics Sandbox</h3>
-                <p>Interactive particle simulation exploring forces and physics systems.</p>
+        <!-- Terminal Intro -->
+        <div class="intro-terminal reveal">
+            <div class="term-bar">
+                <span class="term-dot"></span>
+                <span class="term-dot"></span>
+                <span class="term-dot"></span>
+                <span class="term-filename">profile.sh</span>
             </div>
+            <div class="term-body">
+                <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">whoami</span></p>
+                <p class="term-line term-out">Nguyen Minh Quan &mdash; Aspiring Game Developer</p>
+                <br>
+                <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">cat mission.txt</span></p>
+                <p class="term-line term-out">Building immersive gameplay systems and bringing</p>
+                <p class="term-line term-out">creative ideas to life through code.</p>
+                <br>
+                <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">echo $STATUS</span></p>
+                <p class="term-line term-out">Year 3 @ Nanyang Polytechnic &bull; Diploma in Game Development</p>
+                <br>
+                <p class="term-line"><span class="term-prompt">$</span> <span class="term-cursor">&#9608;</span></p>
             </div>
-
-            <div class="project-card">
-            <img src="./images/88cd60e7b12bb8f958b0758cfdcae65751392c1e.jpeg" alt="Project 2">
-            <div class="project-info">
-                <h3>Enemy AI System</h3>
-                <p>Behavior-based AI system featuring state machines and dynamic combat.</p>
-            </div>
-            </div>
-
-            <div class="project-card">
-            <img src="./images/hq720.jpg" alt="Project 3">
-            <div class="project-info">
-                <h3>OpenGL Renderer</h3>
-                <p>Custom rendering pipeline with lighting and shader effects.</p>
-            </div>
-            </div>
-
         </div>
 
-        </section>
-        </section>
-
-
-        <!-- ABOUT -->
-
-        <section id="about" class="section about">
-            <!-- MAIN MENU -->
-            <div id="main-menu" class=" screen menu-screen">
-                <h1 class="menu-title">SYSTEM TERMINAL</h1>
-                <button id="viewProfileBtn" class="menu-btn">
-                    <span class="btn-text">▶ View My Profile</span>
-                    <div class="btn-loader">
-                        <div class="btn-progress"></div>
-                    </div>
-                </button>
-                <button id="timelineGameBtn" class="menu-btn">
-                    <span class="btn-text">▶ View My Educational Journey</span>
-                    <div class="btn-loader">
-                        <div class="btn-progress"></div>
-                    </div>
-                </button>
-                <div class="scanlines"></div>
-            </div>
-
-            <!-- PROFILE UI -->
-            <div id="profile-ui" class="screen profile-ui hidden">
-                <button class="back-btn">← Back to Menu</button>
-                <h2>PLAYER PROFILE</h2>
-
-                <div class="profile-grid">
-
-                <!-- BASIC -->
-                <div class="panel profile">
-
-                <h3>BASIC</h3>
+        <!-- Skills Preview -->
+        <section class="home-skills reveal">
+            <div class="home-block-header">
                 <div>
-                    <div class="avatar">
-                        <img src="./images/IMG_4139_400px X514px.jpg" alt="Profile Picture">
-                    </div>
-                    <div class="infos">
-                        <div class="info">
-                            <span>Name:</span>
-                            <span>Nguyen Minh Quan</span>
-                        </div>
-                        <div class="info">
-                            <span>
-                                Gender:
-                            </span>
-                            <span>
-                                Male
-                            </span>
-                        </div>
-                        <div class="info">
-                            <span>Class:</span>
-                            <span>Game Developer</span>
-                        </div>
-                        <div class="info">
-                            <span>Guild:</span>
-                            <span>Nanyang Polytechnic</span>
-                        </div>
-                        <div class="info">
-                            <span>Level:</span>
-                            <span>Year 3</span>
-                        </div>
-                        <div class="info">
-                            <span>Specialization:</span>
-                            <span>Gameplay Programming</span>
-                        </div>
-                    </div>
+                    <span class="section-tag">// tools_of_trade</span>
+                    <h2>Tech Stack</h2>
                 </div>
-                
-                </div>
-
-
-                <!-- STATS -->
-                <div class="panel stats">
-
-                <h3>CORE STATS</h3>
-
-                <div class="stat">
-                <span>Logic</span>
-                <div class="progress-bar">
-                <div class="progress-fill" data-width="90%"></div>
-                </div>
-                </div>
-
-                <div class="stat">
-                <span>Creativity</span>
-                <div class="progress-bar">
-                <div class="progress-fill" data-width="85%"></div>
-                </div>
-                </div>
-
-                <div class="stat">
-                <span>Unity</span>
-                <div class="progress-bar">
-                <div class="progress-fill" data-width="88%"></div>
-                </div>
-                </div>
-
-                <div class="stat">
-                <span>Problem Solv</span>
-                <div class="progress-bar">
-                <div class="progress-fill" data-width="80%"></div>
-                </div>
-                </div>
-
-                <div class="stat">
-                <span>Debugging</span>
-                <div class="progress-bar">
-                <div class="progress-fill" data-width="75%"></div>
-                </div>
-                </div>
-
-                <div class="stat">
-                <span>Optimisation</span>
-                <div class="progress-bar">
-                <div class="progress-fill" data-width="85%"></div>
-                </div>
-                </div>
-
-                </div>
-
-                <!-- SKILLS -->
-                <div class="panel skills">
-
-                <h3>ABILITIES</h3>
-
-                <div class="skill">Gameplay Programming</div>
-                <div class="skill">Engine Programming</div>
-                <div class="skill">Rendering Systems</div>
-                <div class="skill">AI Behaviour Systems</div>
-                <div class="skill">Tool Development</div>
-
-                </div>
-
-                <div class="panel hobbies">
-                <h3>SIDE QUESTS</h3>
-
-                <div class="hobby">Game Development</div>
-                <div class="hobby">Listening to Game OST</div>
-                <div class="hobby">Learning Graphics Programming</div>
-                <div class="hobby">Game UI Design</div>
-                </div>
-
-                </div>
-                <div class="scanlines"></div>
+                <button onclick="showSection('skills'); updateActiveNav('skills')">View All Skills</button>
             </div>
-
-            <!-- TIMELINE GAME -->
-            <div id="timeline-game" class="screen timeline-game hidden">
-                <button class="back-btn">← Back to Menu</button>
-                <h2>EDUCATION ADVENTURE</h2>
-
-                <div class="game-world">
-
-                <div id="player"></div>
-                </div>
-
-                <div id="storyBox" class="story-box">
-                    <p>Please use the arrow keys (← →) to navigate through the timeline.</p>
-                </div>
-                <div class="scanlines"></div>
+            <div class="skills-icon-grid">
+                <div class="skill-icon-card"><img src="./images/icons/c++_logo.webp" alt="C++"><span>C++</span></div>
+                <div class="skill-icon-card"><img src="./images/icons/unity-brands-solid-full.svg" alt="Unity"><span>Unity</span></div>
+                <div class="skill-icon-card"><img src="./images/icons/opengl-logo-png-transparent.png" alt="OpenGL"><span>OpenGL</span></div>
+                <div class="skill-icon-card"><img src="./images/icons/c-sharp-logo.png" alt="C#"><span>C#</span></div>
+                <div class="skill-icon-card"><img src="./images/icons/blender-1-logo-svg-vector.svg" alt="Blender"><span>Blender</span></div>
+                <div class="skill-icon-card"><img src="./images/icons/unreal-engine-icon.webp" alt="Unreal Engine"><span>Unreal</span></div>
+                <div class="skill-icon-card"><img src="./images/icons/html5-brands-solid-full.svg" alt="HTML"><span>HTML</span></div>
+                <div class="skill-icon-card"><img src="./images/icons/css-brands-solid-full.svg" alt="CSS"><span>CSS</span></div>
+                <div class="skill-icon-card"><img src="./images/icons/square-js-brands-solid-full.svg" alt="JavaScript"><span>JS</span></div>
+                <div class="skill-icon-card"><img src="./images/icons/logo-google-android-studio.svg" alt="Android Studio"><span>Android</span></div>
             </div>
         </section>
 
-
-        <!-- SKILLS -->
-
-        <section id="skills" class="section">
-
-        <h1>Skills</h1>
-
-        <div class="skill">
-        <p>C++</p>
-        <div class="bar"><div class="progress cpp"></div></div>
-        </div>
-
-        <div class="skill">
-        <p>Unity</p>
-        <div class="bar"><div class="progress unity"></div></div>
-        </div>
-
-        <div class="skill">
-        <p>OpenGL</p>
-        <div class="bar"><div class="progress opengl"></div></div>
-        </div>
-
-        <div class="skill">
-        <p>JavaScript</p>
-        <div class="bar"><div class="progress js"></div></div>
-        </div>
-
+        <!-- Featured Projects -->
+        <section class="home-projects">
+            <div class="home-block-header">
+                <div>
+                    <span class="section-tag">// featured_work</span>
+                    <h2>Featured Projects</h2>
+                </div>
+                <a class="link-arrow" onclick="showSection('projects'); updateActiveNav('projects')">
+                    View All <span class="arrow-icon">&#8599;</span>
+                </a>
+            </div>
+            <div class="featured-grid" id="featuredGrid">
+                <!-- Rendered by JS -->
+            </div>
         </section>
 
+    </section>
 
-        <!-- PROJECTS -->
 
-        <section id="projects" class="section">
+    <!-- ════════════════════ ABOUT ════════════════════ -->
+    <section id="about" class="section">
 
-        <h1>Projects</h1>
-
-        <div class="project-grid">
-
-        <div class="project-card">
-        <h3>Physics Simulation Game</h3>
-        <p>Game that teaches OOP using particle physics.</p>
+        <div id="aboutMenu" class="screen menu-screen">
+            <button class="fs-btn" id="fsBtn" onclick="toggleFullscreen()" title="Toggle fullscreen">&#9974;</button>
+            <span class="menu-tag">// system_terminal</span>
+            <h1 class="menu-title">PLAYER SELECT</h1>
+            <p class="menu-subtitle">Choose a mode to proceed.</p>
+            <button id="viewProfileBtn" class="menu-btn">
+                <span class="btn-text">&#9654; View Profile</span>
+                <div class="btn-loader"><div class="btn-progress"></div></div>
+            </button>
+            <button id="viewInfoBGBtn" class="menu-btn">
+                <span class="btn-text">&#9654; Find Background Info</span>
+                <div class="btn-loader"><div class="btn-progress"></div></div>
+            </button>
+            <div class="scanlines"></div>
         </div>
 
-        <div class="project-card">
-        <h3>Custom Game Engine</h3>
-        <p>Built using C++ and OpenGL.</p>
-        </div>
+        <div id="profileUI" class="screen profile-screen hidden">
+            <button class="fs-btn" id="fsBtn" onclick="toggleFullscreen()" title="Toggle fullscreen">&#9974;</button>
+            <button class="back-btn">&#8592; Back</button>
+            <h2 class="screen-title">PLAYER PROFILE</h2>
 
-        <div class="project-card">
-        <h3>Enemy AI FSM</h3>
-        <p>Stack based finite state machine system.</p>
-        </div>
+            <div class="profile-grid">
 
-        </div>
-
-        </section>
-
-
-        <!-- CONTACT -->
-
-        <section id="contact" class="section contact-section">
-            <h1 class="contact-title">
-                <span class="float-left">LET'S</span>
-                <span class="float-right">CONNECT</span>
-            </h1>
-
-            <p class="contact-subtitle">
-                If you made it this far, we should talk.
-            </p>
-            <div class="contact-container">
-                <div class="contact-form terminal">
-                    <div class="terminal-header">
-                        COMM TERMINAL
-                    </div>
-
-                    <form action="https://formspree.io/f/mlgpbjja" method="POST">
-
-                        <label>Pilot Name</label>
-                        <input type="text" name="name" placeholder="Enter your name" required>
-                        
-                        <input type="hidden" name="_subject" value="Portfolio Contact Message">
-
-                        <label>Transmission ID</label>
-                        <input type="email" name="email" placeholder="Enter your email" required>
-
-                        <label>Message Payload</label>
-                        <div class="textarea-wrapper">
-                            <textarea name="message" id="message" placeholder="Enter your message" rows="5" required></textarea>
-
-                            <div class="word-counter">
-                            PAYLOAD SIZE: 
-                            <span id="wordCount">0</span> TOKENS | 
-                            <span id="charCount">0</span> BYTES
-                            </div>
+                <!-- Basic Info -->
+                <div class="panel panel-basic">
+                    <h3>BASIC</h3>
+                    <div class="panel-basic-inner">
+                        <div class="avatar">
+                            <img src="./images/IMG_4139_400px X514px.jpg" alt="Minh Quan">
                         </div>
-                        
-                        <input type="text" name="_gotcha" style="display:none">
-                        
-                        <div data-formspree-captcha></div>
-                            
-                        <button type="submit">
-                            SEND TRANSMISSION
-                        </button>
-
-                    </form>
-
-                    <div class="terminal-status" id="status">
-                        STATUS: Awaiting input...
+                        <div class="info-list">
+                            <div class="info-row"><span class="info-label">Name</span><span class="info-value">Nguyen Minh Quan</span></div>
+                            <div class="info-row"><span class="info-label">Gender</span><span class="info-value">Male</span></div>
+                            <div class="info-row"><span class="info-label">Class</span><span class="info-value">Game Developer</span></div>
+                            <div class="info-row"><span class="info-label">Guild</span><span class="info-value">Nanyang Polytechnic</span></div>
+                            <div class="info-row"><span class="info-label">Level</span><span class="info-value">Year 3</span></div>
+                            <div class="info-row"><span class="info-label">Spec</span><span class="info-value">Gameplay Programming</span></div>
+                        </div>
                     </div>
                 </div>
-                <div class="contact-info">
-                    <a href="mailto:ngminhquan.2004@gmail.com">✉ Write me</a>
-                    <a href="https://www.linkedin.com/in/nguyen-quan-8a31b217a/" target="_blank">🔗 Connect</a>
-                    <a href="https://www.instagram.com/ng._mq?igsh=dnBlejA4dTNvc3Aw&utm_source=qr" target="_blank">📷 Follow me</a>
+
+                <!-- Core Stats -->
+                <div class="panel panel-stats">
+                    <h3>CORE STATS</h3>
+                    <div class="stat-row"><span>Logic</span><div class="progress-bar"><div class="progress-fill" data-width="90%"></div></div><span class="stat-val">85</span></div>
+                    <div class="stat-row"><span>Creativity</span><div class="progress-bar"><div class="progress-fill" data-width="85%"></div></div><span class="stat-val">88</span></div>
+                    <div class="stat-row"><span>Unity</span><div class="progress-bar"><div class="progress-fill" data-width="88%"></div></div><span class="stat-val">77</span></div>
+                    <div class="stat-row"><span>Problem-Solv</span><div class="progress-bar"><div class="progress-fill" data-width="80%"></div></div><span class="stat-val">82</span></div>
+                    <div class="stat-row"><span>Debugging</span><div class="progress-bar"><div class="progress-fill" data-width="75%"></div></div><span class="stat-val">75</span></div>
+                    <div class="stat-row"><span>Optimisation</span><div class="progress-bar"><div class="progress-fill" data-width="85%"></div></div><span class="stat-val">70</span></div>
+                </div>
+
+                <!-- Abilities -->
+                <div class="panel panel-abilities">
+                    <h3>ABILITIES</h3>
+                    <span class="ability-tag">Gameplay Programming</span>
+                    <span class="ability-tag">AI Behaviour Systems</span>
+                    <span class="ability-tag">Web Programming</span>
+                    <span class="ability-tag">XR Development</span>
+                    <span class="ability-tag">Shader Programming</span>
+                    <span class="ability-tag">Play musical instruments (Flute)</span>
+                    <span class="ability-tag">Cooking</span>
+                    <span class="ability-tag">Singing</span>
+                </div>
+
+                <!-- Side Quests -->
+                <div class="panel panel-hobbies">
+                    <h3>SIDE QUESTS</h3>
+                    <span class="hobby-tag">Game Development</span>
+                    <span class="hobby-tag">Listening to music</span>
+                    <span class="hobby-tag">Game Design</span>
+                    <span class="hobby-tag">Playing Video Games</span>
+                    <span class="hobby-tag">Cooking</span>
+                    <span class="hobby-tag">Singing</span>
+                    <span class="hobby-tag">Watching Movies</span>
+                </div>
+
+            </div>
+            <div class="scanlines"></div>
+        </div>
+
+        <div id="interactiveTerminal" class="screen iterm-screen hidden">
+            <button class="back-btn">&#8592; Back</button>
+            <button class="fs-btn" onclick="toggleFullscreen()" title="Toggle fullscreen">&#9974;</button>
+ 
+            <div class="iterm-header">
+                <span class="iterm-tag">// interactive_terminal &mdash; v1.0.0</span>
+                <span class="iterm-hint">type <em>help</em> to see available commands</span>
+            </div>
+ 
+            <div class="iterm-output" id="itermOutput"></div>
+ 
+            <div class="iterm-input-row">
+                <ul id="itermSuggestions" class="iterm-suggestions"></ul>
+                <span class="term-prompt">$</span>
+                <input
+                    type="text"
+                    id="itermInput"
+                    class="iterm-input"
+                    autocomplete="off"
+                    spellcheck="false"
+                    placeholder="type a command and press Enter..."
+                >
+            </div>
+            <div class="scanlines"></div>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════ EDUCATION ════════════════════ -->
+    <section id="education" class="section">
+        <div class="page-container">
+            <div class="section-header-block">
+                <span class="section-tag">// education.log</span>
+                <h1 class="section-title">LEARNING PATH</h1>
+                <p class="section-desc">A chronological commit history of academic milestones and technical growth. Click any entry to expand.</p>
+            </div>
+            <div class="edu-timeline" id="eduTimeline">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════ SKILLS ════════════════════ -->
+    <section id="skills" class="section">
+        <div class="page-container">
+            <div class="section-header-block">
+                <span class="section-tag">// skills.config</span>
+                <h1 class="section-title">SKILLS</h1>
+                <p class="section-desc">Technical proficiencies across languages, engines, and tools.</p>
+            </div>
+            <div class="skills-categories" id="skillsContainer">
+                <!-- Rendered by JS -->
+            </div>
+            <div class="skills-icon-section">
+                <h3 class="skills-icon-label">// tech_stack</h3>
+                <div class="skills-icon-grid">
+                    <div class="skill-icon-card"><img src="./images/icons/c++_logo.webp" alt="C++"><span>C++</span></div>
+                    <div class="skill-icon-card"><img src="./images/icons/unity-brands-solid-full.svg" alt="Unity"><span>Unity</span></div>
+                    <div class="skill-icon-card"><img src="./images/icons/opengl-logo-png-transparent.png" alt="OpenGL"><span>OpenGL</span></div>
+                    <div class="skill-icon-card"><img src="./images/icons/c-sharp-logo.png" alt="C#"><span>C#</span></div>
+                    <div class="skill-icon-card"><img src="./images/icons/blender-1-logo-svg-vector.svg" alt="Blender"><span>Blender</span></div>
+                    <div class="skill-icon-card"><img src="./images/icons/unreal-engine-icon.webp" alt="Unreal Engine"><span>Unreal</span></div>
+                    <div class="skill-icon-card"><img src="./images/icons/html5-brands-solid-full.svg" alt="HTML"><span>HTML</span></div>
+                    <div class="skill-icon-card"><img src="./images/icons/css-brands-solid-full.svg" alt="CSS"><span>CSS</span></div>
+                    <div class="skill-icon-card"><img src="./images/icons/square-js-brands-solid-full.svg" alt="JavaScript"><span>JS</span></div>
+                    <div class="skill-icon-card"><img src="./images/icons/logo-google-android-studio.svg" alt="Android Studio"><span>Android</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════ PROJECTS ════════════════════ -->
+    <section id="projects" class="section">
+        <div class="page-container">
+            <div class="section-header-block">
+                <span class="section-tag">// projects.json</span>
+                <h1 class="section-title">PROJECTS</h1>
+                <p class="section-desc">A selection of builds, systems, and experiments.</p>
+            </div>
+            <div class="proj-filters" id="projectFilters">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="game">GAME DEV</button>
+                <button class="filter-btn" data-filter="engine">ENGINE</button>
+                <button class="filter-btn" data-filter="xr">AR / XR</button>
+                <button class="filter-btn" data-filter="web">WEB</button>
+            </div>
+            <div class="proj-grid" id="projectGrid">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════ CONTACT ════════════════════ -->
+    <section id="contact" class="section">
+        <div class="page-container contact-layout">
+
+            <div class="contact-left">
+                <span class="section-tag">// contact.sh</span>
+                <h1 class="contact-heading">
+                    <span>LET'S</span>
+                    <span>CONNECT</span>
+                </h1>
+                <p class="contact-sub">If you made it this far, we should talk.</p>
+                <div class="contact-links">
+                    <a href="mailto:ngminhquan.2004@gmail.com" class="contact-link">
+                        <span>&#9993; Email</span><span class="c-arrow">&#8599;</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/nguyen-quan-8a31b217a/" target="_blank" class="contact-link">
+                        <span>&#128279; LinkedIn</span><span class="c-arrow">&#8599;</span>
+                    </a>
+                    <a href="https://github.com/MinhQuan0402" target="_blank" class="contact-link">
+                        <span>&#128062; GitHub</span><span class="c-arrow">&#8599;</span>
+                    </a>
+                    <a href="https://www.instagram.com/ng._mq?igsh=dnBlejA4dTNvc3Aw&utm_source=qr" target="_blank" class="contact-link">
+                        <span>&#128247; Instagram</span><span class="c-arrow">&#8599;</span>
+                    </a>
                 </div>
             </div>
 
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-
-            <div class="footer-container">
-
-            <div class="footer-left">
-            <a onclick="showSection('home'); updateActiveNavItem('home')" class="logo-link">
-                <img src="./images/MyLogo.png" class="logo">
-            </a>
-            <p>Aspiring Game Developer & Programmer</p>
+            <div class="contact-form-panel terminal">
+                <div class="terminal-header">COMM TERMINAL</div>
+                <form action="https://formspree.io/f/mlgpbjja" method="POST">
+                    <label>Pilot Name</label>
+                    <input type="text" name="name" placeholder="Enter your name" required>
+                    <input type="hidden" name="_subject" value="Portfolio Contact Message">
+                    <label>Transmission ID</label>
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <label>Message Payload</label>
+                    <div class="textarea-wrapper">
+                        <textarea name="message" id="message" placeholder="Enter your message" rows="5" required></textarea>
+                        <div class="word-counter">
+                            <span id="wordCount">0</span> TOKENS &nbsp;|&nbsp; <span id="charCount">0</span> BYTES
+                        </div>
+                    </div>
+                    <input type="text" name="_gotcha" style="display:none">
+                    <div data-formspree-captcha></div>
+                    <button type="submit">SEND TRANSMISSION</button>
+                </form>
+                <div class="terminal-status" id="status">STATUS: Awaiting input...</div>
             </div>
 
-            <div class="footer-middle">
-            <h4>Navigation</h4>
-            <ul class="footer-nav">
-            <li class="footer-nav-item" data-section="home">Home</li>
-            <li class="footer-nav-item" data-section="about">About</li>
-            <li class="footer-nav-item" data-section="skills">Skills</li>
-            <li class="footer-nav-item" data-section="projects">Projects</li>
-            <li class="footer-nav-item" data-section="contact">Contact</li>
-            </ul>
+        </div>
+    </section>
+
+
+    <!-- ════════════════════ FOOTER ════════════════════ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a class="logo-link" onclick="showSection('home'); updateActiveNav('home')">
+                    <img src="./images/MyLogo.png" class="logo" alt="Logo">
+                </a>
+                <p>Aspiring Game Developer &amp; Programmer</p>
             </div>
-
-            <div class="footer-right">
-            <h4>Connect</h4>
-            <div class="social-icons">
-
-            <a href="https://github.com/MinhQuan0402" target="_blank" class="social-icon">
-                <img src="images/icons/github-brands-solid-full.svg" alt="GitHub">
-            </a>
-
-            <a href="https://www.linkedin.com/in/nguyen-quan-8a31b217a/" target="_blank" class="social-icon">
-                <img src="images/icons/linkedin-in-brands-solid-full.svg" alt="LinkedIn">
-            </a>
-
-            <a href="https://www.facebook.com/share/17N4FXkfNk/?mibextid=wwXIfr" target="_blank" class="social-icon">
-                <img src="images/icons/facebook-brands-solid-full.svg" alt="Facebook">
-            </a>
-
-            <a href="https://www.instagram.com/ng._mq?igsh=dnBlejA4dTNvc3Aw&utm_source=qr" target="_blank" class="social-icon">
-                <img src="images/icons/instagram-brands-solid-full.svg" alt="Instagram">
-            </a>
-
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-nav">
+                    <li class="footer-nav-item" data-section="home">Home</li>
+                    <li class="footer-nav-item" data-section="about">About</li>
+                    <li class="footer-nav-item" data-section="education">Education</li>
+                    <li class="footer-nav-item" data-section="skills">Skills</li>
+                    <li class="footer-nav-item" data-section="projects">Projects</li>
+                    <li class="footer-nav-item" data-section="contact">Contact</li>
+                </ul>
             </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="https://github.com/MinhQuan0402" target="_blank" class="social-icon">
+                        <img src="images/icons/github-brands-solid-full.svg" alt="GitHub">
+                    </a>
+                    <a href="https://www.linkedin.com/in/nguyen-quan-8a31b217a/" target="_blank" class="social-icon">
+                        <img src="images/icons/linkedin-in-brands-solid-full.svg" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.facebook.com/share/17N4FXkfNk/?mibextid=wwXIfr" target="_blank" class="social-icon">
+                        <img src="images/icons/facebook-brands-solid-full.svg" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/ng._mq?igsh=dnBlejA4dTNvc3Aw&utm_source=qr" target="_blank" class="social-icon">
+                        <img src="images/icons/instagram-brands-solid-full.svg" alt="Instagram">
+                    </a>
+                </div>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&#169; 2026 Nguyen Minh Quan &mdash; All Rights Reserved.</p>
+        </div>
+    </footer>
 
-            </div>
-
-            <div class="footer-bottom">
-            <p>© 2026 Quan Portfolio. All Rights Reserved.</p>
-            </div>
-
-        </footer>
-        <button id="backToTop">↑</button>
-        <script src="https://formspree.io/js/formbutton-v1.min.js"></script>
-    </body>
+    <button id="backToTop" aria-label="Back to top">&#8593;</button>
+    <script src="https://formspree.io/js/formbutton-v1.min.js"></script>
+</body>
 </html>
