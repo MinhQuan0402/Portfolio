@@ -1263,7 +1263,8 @@ function renderProjects() {
 
 function renderFeatured() {
     if (!featuredGrid) return;
-    PROJECTS_DATA.slice(0, 3).forEach(p => featuredGrid.appendChild(buildProjectCard(p)));
+    
+    PROJECTS_DATA.slice(6, 9).forEach(p => featuredGrid.appendChild(buildProjectCard(p)));
 }
 
 // Filter click handler (event delegation on the filter bar)
