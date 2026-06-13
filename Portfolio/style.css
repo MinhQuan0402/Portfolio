@@ -20,17 +20,18 @@
     --bg:          #060606;
     --surface:     #0f0f0f;
     --surface-2:   #181818;
-    --border:      #1e1e1e;
-    --border-2:    #2c2c2c;
-    --muted:       #404040;
-    --dim:         #a2a1a1;
-    --text:        #c4c4c4;
+    --border:      #4d4d4d;
+    --border-2:    #666666;
+    --muted:       #b8b8b8;
+    --dim:         #c2c2c2;
+    --text:        #ffffff;
     --accent:      #e8e8e8;
     --white:       #ffffff;
 
     --font-display: "Bungee", sans-serif;
     --font-body:    "RobotoMono", monospace;
 
+    --gap: clamp(1rem, 2.5vw, 3rem); 
     --px:  clamp(24px, 6vw, 80px);
     --py:  clamp(60px, 8vw, 120px);
     --r:   2px;
@@ -119,8 +120,8 @@ ul { list-style: none; }
 .section.active { display: block; }
 
 .page-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0 clamp(16px, 4vw, 40px);;
     padding: var(--py) var(--px);
 }
 
@@ -798,8 +799,6 @@ to keep them visually separated and allow for better scrolling behavior */
 /* ════════════════════════════════════════════════════════════
    EDUCATION
    ════════════════════════════════════════════════════════════ */
-#education .page-container { max-width: 960px; }
-
 .edu-timeline { position: relative; padding-bottom: 40px; }
 
 /* Center vertical line */
@@ -911,6 +910,267 @@ to keep them visually separated and allow for better scrolling behavior */
 }
 .edu-card:hover .edu-hint       { color: var(--dim); }
 .edu-card.expanded .edu-hint    { color: var(--dim); }
+ 
+.achiev-wrapper {
+    background-image: url(./images/trophy_bg.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+    position: relative;
+}
+ 
+/* Sticky container — pinned to viewport while scrolling through wrapper */
+.achiev-sticky {
+    position: sticky;
+    top: 0px;
+    height: 100vh;
+    overflow: hidden;
+}
+ 
+/* Fixed overlay */
+.achiev-overlay {
+    position: absolute;
+    top: 0px; left: 0; right: 0;
+    z-index: 10;
+    padding: 18px clamp(24px,6vw,80px) 0px;
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+
+    background: linear-gradient(to bottom, var(--bg) 50%, transparent 100%);
+    pointer-events: none;
+}
+ 
+.achiev-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    color: var(--accent);
+    margin-top: 6px;
+}
+ 
+/* Pulsing scroll hint — fades out once user begins scrolling */
+.achiev-scroll-hint {
+    text-align: right;
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    padding-bottom: 6px;
+    transition: opacity 0.5s;
+    animation: achiev-pulse 2.2s ease-in-out infinite;
+}
+ 
+@keyframes achiev-pulse {
+    0%, 100% { opacity: 0.25; }
+    50%       { opacity: 1;    }
+}
+ 
+/* Thin progress bar — fixed at bottom of sticky container */
+.achiev-progress-bar {
+    grid-column: span 2 / span 2;
+    grid-row-start: 2;
+
+    height: 2px;
+    background: var(--border);
+    z-index: 10;
+}
+ 
+.achiev-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    transition: width 0.04s linear;
+}
+ 
+/* Horizontal track — translateX driven by JS scroll handler */
+.achiev-track {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    gap: 1px;
+    background: transparent;
+    will-change: transform;
+}
+ 
+/* ── Panel base ──────────────────────────────────────────── */
+.achiev-panel {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* top padding clears overlay + navbar (~110px total) */
+    padding: 110px 28px 40px;
+ 
+    /* entrance: slides in from right as it comes into view */
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 0.5s ease, transform 0.5s ease,
+                background var(--transition);
+}
+ 
+.achiev-panel.visible { opacity: 1; transform: translateX(0); }
+.achiev-panel:hover   { background: var(--surface-2); }
+ 
+/* ── Intro panel (wider, stats live here) ───────────────── */
+.achiev-panel-intro {
+    width: 100%;
+    background: transparent;
+    padding-bottom: 56px;
+}
+.achiev-panel-intro:hover { background: transparent; }
+ 
+.achiev-intro-text {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--dim);
+    line-height: 1.85;
+    margin-bottom: 36px;
+}
+ 
+.achiev-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 40px;
+}
+ 
+.achiev-stat  { display: flex; flex-direction: column; gap: 5px; }
+ 
+.achiev-num {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    color: var(--accent);
+    line-height: 1;
+}
+ 
+.achiev-label {
+    font-size: 0.62rem;
+    color: var(--dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+ 
+.achiev-next-label {
+    text-align: right;
+    font-size: 0.66rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+}
+ 
+/* ── Divider panel (narrow separator between categories) ── */
+.achiev-panel-divider {
+    width: clamp(140px, 12vw, 200px);
+    background: var(--surface-2);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+.achiev-panel-divider:hover { background: var(--surface-2); }
+ 
+.achiev-divider-text {
+    font-size: 0.68rem;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+    line-height: 1.9;
+}
+
+.achive-card-container {
+    width: 100%;
+	height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--gap);
+}
+
+.achive-card {
+    border: 1px solid var(--border);
+    padding: var(--gap);
+    align-content: center;
+}
+
+.achive-card-img {
+    grid-row: span 2 / span 2;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    cursor: pointer;
+    border-radius: 20px;
+    align-content: center;
+    justify-items: center;
+}
+
+.achive-card-img > img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: auto;
+    height: auto;
+    max-height: 100%;
+}
+
+.achive-card-img > img:hover {
+    border: 1px solid #0059ff;
+}
+
+.achive-card-img > img:hover::after {
+    position: absolute;
+    background-color: var(--bg);
+    top: 0; left: 0; bottom: 0; right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Card content ────────────────────────────────────────── */
+.achiev-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+ 
+.achiev-icon { font-size: 1.1rem; color: var(--accent); }
+.achiev-year { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; }
+ 
+.achiev-card-title {
+    font-size: clamp(0.84rem, 1.4vw, 1rem);
+    color: var(--accent);
+    line-height: 1.35;
+    margin-bottom: 8px;
+}
+ 
+.achiev-card-issuer {
+    font-size: 0.68rem;
+    color: var(--dim);
+    font-style: italic;
+    margin-bottom: 14px;
+}
+ 
+.achiev-card-desc {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    padding: var(--gap);
+
+    font-size: 0.74rem;
+    color: var(--text);
+    line-height: 1.75;
+
+    border: 1px dashed var(--border-2);
+    border-radius: 20px;
+}
+ 
+.achiev-card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
+ 
+.achiev-tag {
+    font-size: 0.6rem;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    letter-spacing: 0.06em;
+}
 
 /* ════════════════════════════════════════════════════════════
    SKILLS
@@ -1361,6 +1621,44 @@ to keep them visually separated and allow for better scrolling behavior */
 
     .featured-grid { grid-template-columns: 1fr; background: transparent; gap: 16px; }
     .featured-grid .proj-card { border: 1px solid var(--border); }
+
+    .achiev-wrapper { height: auto !important; }
+    .achiev-sticky  { position: relative; height: auto; overflow: visible; }
+    .achiev-overlay { 
+        position: relative; 
+        background: none;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        padding: clamp(24px,6vw,80px) clamp(24px,6vw,80px) 0; 
+    }
+    .achiev-progress-bar  { display: none; }
+    .achiev-scroll-hint   { display: none; }
+    .achiev-track {
+        flex-direction: column;
+        background: transparent;
+        gap: 16px;
+        transform: none !important;
+        padding: 24px clamp(24px,6vw,80px) 48px;
+    }
+    .achiev-panel {
+        width: 100%; height: auto;
+        opacity: 1 !important; transform: none !important;
+        border: 1px solid var(--border);
+        padding: 24px;
+    }
+    .achiev-panel-intro  
+    { 
+        border: none;
+        justify-content: flex-start; 
+    }
+    .achiev-panel-divider{ width: 100%; padding: 20px 24px; }
+    .achiev-stats 
+    { 
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .achiev-next-label { display: none; }
 }
 
 @media (max-width: 560px) {

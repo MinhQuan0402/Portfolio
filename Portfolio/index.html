@@ -7,6 +7,7 @@
     <title>Minh Quan — Game Developer</title>
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
+    
 </head>
 <body>
 
@@ -19,7 +20,6 @@
             <li class="nav-item active" data-section="home">Home</li>
             <li class="nav-item" data-section="about">About</li>
             <li class="nav-item" data-section="education">Education</li>
-            <li class="nav-item" data-section="skills">Skills</li>
             <li class="nav-item" data-section="projects">Projects</li>
             <li class="nav-item" data-section="contact">Contact</li>
         </ul>
@@ -90,7 +90,7 @@
                     <span class="section-tag">// tools_of_trade</span>
                     <h2>Tech Stack</h2>
                 </div>
-                <button onclick="showSection('skills'); updateActiveNav('skills')">View All Skills</button>
+                <button onclick="showSection('about'); updateActiveNav('about')">View All Skills</button>
             </div>
             <div class="skills-icon-grid">
                 <div class="skill-icon-card"><img src="./images/icons/c++_logo.webp" alt="C++"><span>C++</span></div>
@@ -239,6 +239,8 @@
 
     <!-- ════════════════════ EDUCATION ════════════════════ -->
     <section id="education" class="section">
+
+        <!-- ── Timeline ──────────────────────────────── -->
         <div class="page-container">
             <div class="section-header-block">
                 <span class="section-tag">// education.log</span>
@@ -249,34 +251,29 @@
                 <!-- Rendered by JS -->
             </div>
         </div>
-    </section>
 
-
-    <!-- ════════════════════ SKILLS ════════════════════ -->
-    <section id="skills" class="section">
-        <div class="page-container">
-            <div class="section-header-block">
-                <span class="section-tag">// skills.config</span>
-                <h1 class="section-title">SKILLS</h1>
-                <p class="section-desc">Technical proficiencies across languages, engines, and tools.</p>
-            </div>
-            <div class="skills-categories" id="skillsContainer">
-                <!-- Rendered by JS -->
-            </div>
-            <div class="skills-icon-section">
-                <h3 class="skills-icon-label">// tech_stack</h3>
-                <div class="skills-icon-grid">
-                    <div class="skill-icon-card"><img src="./images/icons/c++_logo.webp" alt="C++"><span>C++</span></div>
-                    <div class="skill-icon-card"><img src="./images/icons/unity-brands-solid-full.svg" alt="Unity"><span>Unity</span></div>
-                    <div class="skill-icon-card"><img src="./images/icons/opengl-logo-png-transparent.png" alt="OpenGL"><span>OpenGL</span></div>
-                    <div class="skill-icon-card"><img src="./images/icons/c-sharp-logo.png" alt="C#"><span>C#</span></div>
-                    <div class="skill-icon-card"><img src="./images/icons/blender-1-logo-svg-vector.svg" alt="Blender"><span>Blender</span></div>
-                    <div class="skill-icon-card"><img src="./images/icons/unreal-engine-icon.webp" alt="Unreal Engine"><span>Unreal</span></div>
-                    <div class="skill-icon-card"><img src="./images/icons/html5-brands-solid-full.svg" alt="HTML"><span>HTML</span></div>
-                    <div class="skill-icon-card"><img src="./images/icons/css-brands-solid-full.svg" alt="CSS"><span>CSS</span></div>
-                    <div class="skill-icon-card"><img src="./images/icons/square-js-brands-solid-full.svg" alt="JavaScript"><span>JS</span></div>
-                    <div class="skill-icon-card"><img src="./images/icons/logo-google-android-studio.svg" alt="Android Studio"><span>Android</span></div>
+        <!-- ── Achievements ──────────────────────────────── -->
+        <div id="achievWrapper" class="achiev-wrapper">
+            
+            <div class="achiev-sticky">
+ 
+                <!-- Fixed overlay: title + hint + progress bar -->
+                <div class="achiev-overlay">
+                    <div class="achiev-overlay-left">
+                        <span class="section-tag">// achievements.json</span>
+                        <h2 class="achiev-title">ACHIEVEMENTS</h2>
+                    </div>
+                    <span class="achiev-scroll-hint" id="achievHint">scroll &rarr;</span>
+                    <div class="achiev-progress-bar">
+                        <div class="achiev-progress-fill" id="achievProgressFill"></div>
+                    </div>
                 </div>
+ 
+                <!-- Horizontal track — translated by JS on scroll -->
+                <div class="achiev-track" id="achievTrack">
+                    <!-- All panels injected by renderAchievements() -->
+                </div>
+ 
             </div>
         </div>
     </section>
@@ -296,6 +293,7 @@
                 <button class="filter-btn" data-filter="engine">ENGINE</button>
                 <button class="filter-btn" data-filter="xr">AR / XR</button>
                 <button class="filter-btn" data-filter="web">WEB</button>
+                <button class="filter-btn" data-filter="database">DATABASE</button>
             </div>
             <div class="proj-grid" id="projectGrid">
                 <!-- Rendered by JS -->
@@ -372,7 +370,6 @@
                     <li class="footer-nav-item" data-section="home">Home</li>
                     <li class="footer-nav-item" data-section="about">About</li>
                     <li class="footer-nav-item" data-section="education">Education</li>
-                    <li class="footer-nav-item" data-section="skills">Skills</li>
                     <li class="footer-nav-item" data-section="projects">Projects</li>
                     <li class="footer-nav-item" data-section="contact">Contact</li>
                 </ul>

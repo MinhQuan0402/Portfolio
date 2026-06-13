@@ -52,24 +52,255 @@ const EDUCATION_DATA = [
 
 const PROJECTS_DATA = [
     {
-        file: 'ironbound.cpp',
-        title: 'IRONBOUND: The Last Warden',
+        file: 'interactive_storytelling_project.cpp',
+        title: 'Home Invasion Adventure',
         category: 'game',
-        description: 'Third-person Soulslike action-adventure for PS5 with full DualSense integration — adaptive triggers, haptic feedback, and gyroscope-based mount mechanics.',
-        tech: ['C++', 'PS5 SDK', 'DualSense', 'HLSL'],
+        description: 'This is a C++ 2D game framework for a home/living space exploration game. This project is done by 4 people.<br>' +
+                     'The game centers around a home environment with interactive furniture, items, and a "Robber" antagonist, ' +
+                     'suggesting a home defense or detective-style gameplay mechanic.',
+        tech: ['C++', 'Text-based', 'Command Prompt', 'System Management'],
         status: 'completed',
-        image: null,
+        image: './images/projects/interactive_story_project.png',
+        year: '2024'
+    },
+    {
+        file: 'computer-graphic-modeling.cpp',
+        title: 'Computer Graphic Modeling and Animation',
+        category: 'engine',
+        description: 'It is a OpenGL application that renders a stylized character scene using custom procedural meshes from MeshBuilder (core logic in Scene1.cpp). ' +
+                     'Input-driven state machine (idle, flying, summon, attack) animates parts via transform matrices and time-based updates.',
+        tech: ['C++', 'OpenGL', 'Graphics'],
+        status: 'completed',
+        image: './images/projects/cgm_a1.png',
+        year: '2024'
+    },
+    {
+        file: 'computer-graphic-modeling.cpp',
+        title: 'Mini OpenGL Game',
+        category: 'game',
+        description: 'This project using C++ and OpenGL. It contains gameplay and objects like player (Player, PlayerMesh), ' +
+                     'enemies and AI (Enemy, Spider, Zombie, Dragon, Bird, FOV_Vision, Eye), projectiles (Magic_Bullet, BirdBullet), ' +
+                     'pickups/UI (HealingPotion, BarUI, Stuff), environment objects (Tree, Rock, Wall). ' + 
+                     'It supported systems: input (Input), collision (Collider), transforms (Transform).',
+        tech: ['C++', 'Simple AI', 'FSM', 'Modeling', 'Coded Animation'],
+        status: 'completed',
+        image: './images/projects/cgm_a2.png',
+        year: '2024'
+    },
+    {
+        file: 'computer-graphic-programming.cpp',
+        title: 'Project Name: Robot Animation Engine',
+        category: 'engine',
+        description: 'This is a C++14-based 3D graphics application that creates and animates robotic ' +
+                     'characters in an interactive environment. The architecture follows a component-' +
+                     'based design pattern with scene management and state machines. ' + 
+                     'Core Features:<br>' + 
+                     '1. Graphics & Rendering<br>' +
+                     '2. Character System<br>',
+        tech: ['C++', 'Coded Animation', 'Coded Meshes', 'Hierarchical Modelling', 'Stack Matrix'],
+        status: 'completed',
+        image: './images/projects/cgp_a1.png',
+        year: '2024'
+    },
+    {
+        file: 'forces-and-motion-programming.cpp',
+        title: 'Orbit Escape',
+        category: 'game',
+        description: 'This is a space-themed platformer/physics-based game built in C++ using OpenGL. ' +
+                     'This game is inspired by gravity ghost, which you are played as astronaut. ' +
+                     'You need to glide around the space and collect star then you able to ride your space ship. ' +
+                     'Your space ship will fly forward, so you have dodge the asteroid.',
+        tech: ['OpenGL', 'C++', 'Physics', 'Collision Detection'],
+        status: 'completed',
+        image: './images/projects/formo_a1.png',
+        year: '2024'
+    },
+    {
+        file: 'database.sql',
+        title: 'Interactive Quiz Platform with Cloud/Local MySQL Database',
+        category: 'database',
+        description: 'This is a Quiz Management & Leaderboard System built in C++ that interfaces with a MySQL database.' +
+                     'The application provides two main functional areas:<br>' +
+                     '1. Question Bank Management (Admin Features)<br>' +
+                     '2. Quiz Features (User Features)<br>' +
+                     '3. Analytics & Reporting<br>' +
+                     '4. Database Architecture<br>' +
+                     '5. Technical Details',
+        tech: ['MySQL', 'C++', 'Networking'],
+        status: 'completed',
+        image: './images/projects/database_a2.png',
         year: '2025'
     },
     {
-        file: 'ar-science-explorer.unity',
+        file: 'computer-graphic-programming.cpp',
+        title: '3D Interactive Horror Environment',
+        category: 'game',
+        description: 'This is a C++ 3D graphics game built on OpenGL (based on the shader and graphics-related components). ' +
+                     'Players play as an explorer to investigate a house that recently have a murder case. ' +
+                     'They will encounter unusual phenomenon and complete puzzles to complete the level. ' +
+                     'This project created to demonstrate OpenGL custom shader such as texture, lighting and text rendering. ',
+        tech: ['OpenGL', 'C++', 'Shader', 'Collision Detection', 'Entity Management'],
+        status: 'completed',
+        image: './images/projects/cgp_a2.png',
+        year: '2025'
+    },
+    {
+        file: 'forces-and-motion-programming.cpp',
+        title: 'Angry Block',
+        category: 'engine',
+        description: 'This is a 2D Game Engine Framework built in C++ that combines graphics rendering with physics ' +
+                     'simulation. The engine implements an entity-component architecture where game objects are ' +
+                     'composed of reusable components like Transform and various colliders (Box, Circle, Polygon). ' +
+                     'It features a complete 2D physics system with collision detection and manifold resolution, ' +
+                     'managed through specialized manager classes for scenes, game objects, textures, and colliders.',
+        tech: ['OpenGL', 'C++', 'Physics', 'Complex Collision Detection + Resolve', 'Rigidbody 2D'],
+        status: 'completed',
+        image: './images/projects/formo_a2.png',
+        year: '2025'
+    },
+    {
+        file: 'computer-graphics-simulation-project.cpp',
+        title: 'Horror Carnival',
+        category: 'game',
+        description: 'This is a 2D Game Project with a team of 4 people built in C++ that combines graphics rendering with physics engine.' +
+                     'Players are exploring the carnival area to get the ticket to watch the circus show by playing the mini game ' +
+                     'Four mini games, four different unique scene that built by four talented students. ' +
+                     'I was in charge of implementing physics engine into framework, one of the mini game and horror cutscene in the circus.',
+        tech: ['OpenGL', 'C++', 'Physics Engine', 'Complex Collision Detection + Resolve'],
+        status: 'completed',
+        image: './images/projects/cgsp.png',
+        year: '2025'
+    },
+    {
+        file: 'web-dev.html',
+        title: 'Ever First Portfolio',
+        category: 'web',
+        description: 'Learning in HTML and CSS in my Nanyang Poly, I have built my ever-first portfolio. ' +
+                     'This project able to feature myself, education journey and showcase all my past project.',
+        tech: ['HTML', 'CSS'],
+        status: 'completed',
+        image: './images/projects/webdev_a1.png',
+        year: '2025'
+    },
+    {
+        file: 'web-dev.html',
+        title: 'GASI Website',
+        category: 'web',
+        description: 'I created my first educational website. ' +
+                     'This wbesite is about space, galaxy and technology. Users also can play some mini games or quiz on the website.',
+        tech: ['HTML', 'CSS', 'JS', 'Audio'],
+        status: 'completed',
+        image: './images/projects/webdev_a2.png',
+        year: '2025'
+    },
+    {
+        file: '2d-game-engine-application.unity',
+        title: 'Race Up',
+        category: 'game',
+        description: 'This is my ever first Top-Down 2D Hyper-Casual Driving Game that using Unity in Nanyang Poly. ' +
+                     'This game is about driving car only upwards infinitely. Players have to avoid obstable so that they can survive as long as they could.',
+        tech: ['Unity', 'C#'],
+        status: 'completed',
+        image: './images/projects/2dgea_a1.png',
+        year: '2025'
+    },
+    {
+        file: '2d-game-engine-application.unity',
+        title: '2D Action Platformer',
+        category: 'game',
+        description: 'This is a 2D Action Platformer Game that built in Unity ' +
+                     'Players need to explore the map by using movement mechanics to reach different platform. In the exploration journey, ' +
+                     'players will encounter enemies to stop them. Players can pickup sword and other consumables to help them achieve their goals. ',
+        tech: ['Unity', 'C#', 'AI', 'State Machine'],
+        status: 'completed',
+        image: './images/projects/2dgea_a2.png',
+        year: '2025'
+    },
+    {
+        file: 'gameplay-programming.cpp',
+        title: '2D Action Game',
+        category: 'game',
+        description: 'This is a 2D action game engine written in C++14 using OpenGL, featuring player-controlled combat, ' +
+                     'enemy AI utilizing finite state machines (idle, chase, attack, stun states), ' + 
+                     'projectile-based combat mechanics, an inventory system, physics simulation, ' +
+                     'and game state management (intro, menu, play, pause). The project implements core game systems including a 2D tilemap, ' +
+                     'entity managers for enemies and projectiles, GUI/HUD rendering, and a scoreboard system, all organized through singleton ' +
+                     'patterns and coordinated by a central scene manager that handles rendering, input processing, and game logic updates.',
+        tech: ['OpenGL', 'C++', 'AI', 'State Machine'],
+        status: 'completed',
+        image: './images/projects/gplp.png',
+        year: '2025'
+    },
+    {
+        file: 'mobile-programming.andriod',
+        title: 'Megero',
+        category: 'game',
+        description: 'This project is buit by two people in Andriod Studio. ' +
+                     'I responsible for core gameplay mechanics. ' + 
+                     'Beside using java for gameplay programming, I also XML to build layout and relavent UI. ',
+        tech: ['Andriod Studio', 'Java', 'XML'],
+        status: 'completed',
+        image: './images/projects/mobile_programming.jpg',
+        year: '2025'
+    },
+    {
+        file: 'shader-optimisation.unity',
+        title: '3D Custom Shader Scene',
+        category: 'engine',
+        description: 'This project is buit in Unity by using a custom material. ' +
+                     'It uses HLSL to create materials that produces textures, shadows, lighting, normal. ' + 
+                     'Here are the features in this project: <br>' +
+                     '1. Mirror reflection (Using scripted reflection probe). <br>' +
+                     '2. Vertex displacement. <br>' +
+                     '3. Multiple lights with different types of light.  <br>' +
+                     '4. Multiple shadow for all types of light.  <br>' +
+                     '5. Multiple texture by using RGBA channels (for terrain material).  <br>' +
+                     '6. Water with refraction (depth based) and reflection.  <br>',
+        tech: ['Unity', 'Shaderlab', 'C#', 'HLSL'],
+        status: 'completed',
+        image: './images/projects/shader_a1.png',
+        year: '2025'
+    },
+    {
+        file: 'shader-optimisation.unity',
+        title: 'Post Processing 3D Action Game',
+        category: 'engine',
+        description: 'This project is buit in Unity with custom post processing and using shader graph. ' +
+                     'It uses built in Unity Shader Graph to create unique materials and post processing. ' + 
+                     'The project also uses HLSL to create different post processing to enhance the experience of the gameplay' + 
+                     'Here are the features in this project: <br>' +
+                     '1. Cel Shader <br>' +
+                     '2. Slash Effect <br>' +
+                     '3. Sketch Shadow Effect.  <br>' +
+                     '4. Outline Effect.  <br>' +
+                     '5. Action Line Effect.  <br>' +
+                     '6. Impact Frame Effect.  <br>' +
+                     '7. Radial Blur Effect.  <br>',
+        tech: ['Unity', 'Shaderlab', 'C#', 'HLSL', 'Post-processing', 'Shader Graph'],
+        status: 'completed',
+        image: './images/projects/shader_a2.png',
+        year: '2025'
+    },
+    {
+        file: 'multiplayer-game-programming.unity',
+        title: 'Around Us',
+        category: 'game',
+        description: 'Around Us is the my first multiplayer game built in Unity using Netcode. ' +
+                     'This game is inspired by Among Us. It is unique that players are playing in 3D environments with unique gameplay.',
+        tech: ['Unity', 'Netcode', 'C#', 'Multiplayer', 'Networking'],
+        status: 'completed',
+        image: './images/projects/mgp.png',
+        year: '2025'
+    },
+    {
+        file: 'ar-xr-development.unity',
         title: 'AR Science Explorer',
         category: 'xr',
         description: 'Free Android AR app using ARCore/Vuforia for students to visualise abstract science concepts in 3D with interactive elements and quizzes.',
         tech: ['Unity', 'ARCore', 'Vuforia', 'C#', 'Android'],
         status: 'completed',
-        image: null,
-        year: '2025'
+        image: './images/projects/ar.jpg',
+        year: '2026'
     },
     {
         file: 'roguevania.unity',
@@ -78,80 +309,18 @@ const PROJECTS_DATA = [
         description: '2D action platformer with roguelike mechanics, pixel art aesthetic, five weapon types, parallax scrolling backgrounds, and a boss fight system.',
         tech: ['Unity', 'C#', 'Pixel Art', 'Tilemaps'],
         status: 'in-progress',
-        image: null,
-        year: '2025'
-    },
-    {
-        file: 'physics-sandbox.cpp',
-        title: 'Physics Sandbox',
-        category: 'engine',
-        description: 'Interactive particle simulation exploring OOP principles through forces, collisions, and physics systems built from the ground up.',
-        tech: ['C++', 'OpenGL', 'Physics'],
-        status: 'completed',
-        image: './images/simworld-2026-logo-on-bg.jpg',
-        year: '2024'
-    },
-    {
-        file: 'enemy-ai.cpp',
-        title: 'Enemy AI FSM System',
-        category: 'engine',
-        description: 'Stack-based finite state machine for enemy behaviour with dynamic combat patterns, line-of-sight detection, and pathfinding algorithms.',
-        tech: ['C++', 'AI', 'FSM', 'Pathfinding'],
-        status: 'completed',
-        image: './images/88cd60e7b12bb8f958b0758cfdcae65751392c1e.jpeg',
-        year: '2024'
-    },
-    {
-        file: 'renderer.cpp',
-        title: 'OpenGL Custom Renderer',
-        category: 'engine',
-        description: 'Custom real-time rendering pipeline with Phong lighting, normal mapping, shadow mapping, and post-processing shader effects.',
-        tech: ['C++', 'OpenGL', 'GLSL', 'GLFW'],
-        status: 'completed',
-        image: './images/hq720.jpg',
-        year: '2024'
+        image: './images/projects/iwp.png',
+        year: '2026'
     },
     {
         file: 'portfolio.html',
         title: 'Developer Portfolio',
         category: 'web',
-        description: 'Personal portfolio with terminal-themed UI, RPG profile card, interactive education timeline, and project showcase. Built with vanilla JS.',
+        description: 'Personal portfolio with terminal-themed UI, interactive education timeline, and project showcase. Built with vanilla JS.',
         tech: ['HTML', 'CSS', 'JavaScript'],
         status: 'in-progress',
-        image: null,
+        image: './images/projects/portfolio.png',
         year: '2026'
-    }
-];
-
-const SKILLS_DATA = [
-    {
-        label: '// Languages',
-        items: [
-            { name: 'C++',        level: 90 },
-            { name: 'C#',         level: 85 },
-            { name: 'GLSL',       level: 70 },
-            { name: 'JavaScript', level: 68 },
-            { name: 'HTML / CSS', level: 75 }
-        ]
-    },
-    {
-        label: '// Engines & Frameworks',
-        items: [
-            { name: 'Unity',          level: 88 },
-            { name: 'OpenGL',         level: 80 },
-            { name: 'ARCore/Vuforia', level: 70 },
-            { name: 'Unreal Engine',  level: 55 },
-            { name: 'PS5 SDK',        level: 65 }
-        ]
-    },
-    {
-        label: '// Tools & Software',
-        items: [
-            { name: 'Git / GitHub',   level: 75 },
-            { name: 'Blender',        level: 60 },
-            { name: 'Android Studio', level: 65 },
-            { name: 'Visual Studio',  level: 85 }
-        ]
     }
 ];
 
@@ -250,6 +419,112 @@ const ITERM_CANDIDATES = [
     'cat dream.txt',
 ];
 
+const ACHIEVEMENTS_DATA = {
+    certificates: [
+        {
+            title: 'Student Councilor',
+            issuer: 'Yuan Ching Secondary School',
+            year: '2020',
+            tags: ['Leadership', 'Discipline'],
+            desc: 'My leadership was recognised by my teachers and friends. They norminated me as student leader. This is where my leadership journey begun',
+            src : './images/cert/sec2_cou.jpg'
+        },
+        {
+            title: 'Best in Geography',
+            issuer: 'Yuan Ching Secondary School',
+            year: '2020',
+            tags: ['Geography', 'Hard-working', 'Focus'],
+            desc: 'I put my hard-work, dedication and perseverance to pursue in my study. It finally paid off when I tried my very best in my beloved subject.',
+            src : './images/cert/geo_cert.jpg'
+        },
+        {
+            title: 'Cyber Security Completion',
+            issuer: 'Yuan Ching Secondary School',
+            year: '2021',
+            tags: ['Cyber Security', 'Participant', 'Outside Classroom'],
+            desc: 'Every since I love exploring computer science, I always seek for opportunities to explore. ' +
+                  'My school offered this chance for me to learn cyber security. It was a memorable experience.',
+            src : './images/cert/cyber_cert.jpg'
+        },
+        {
+            title: 'Student Senior Councilor',
+            issuer: 'Yuan Ching Secondary School',
+            year: '2021',
+            tags: ['Leadership', 'Discripline', 'Senior', 'Promotion'],
+            desc: 'Leadership does not stop at Secondary 2, my efforts got recognised by my teachers. They promoted me as senior councilor. This showed that my leadersip had improved over the year. ' +
+                  'Hence, the responsibility was even more demanding.',
+            src : './images/cert/sec3_cou.jpg'
+        },
+        {
+            title: 'Student Senior Councilor ',
+            issuer: 'Yuan Ching Secondary School',
+            year: '2022',
+            tags: ['Leadership', 'Discipline', 'Contribution', 'Consistence'],
+            desc: 'Even though the weight of Senior Councillor title is heavy, nothing can stop me from striking perfection. I did show to my teachers and friends the consistency of my leadersip.',
+            src : './images/cert/sec4_cou.jpg'
+        },
+        {
+            title: 'Chief Librarian in Concert Band',
+            issuer: 'Yuan Ching Secondary School',
+            year: '2022',
+            tags: ['Leadership', 'Contribution', 'Responsibility', 'CCA'],
+            desc: 'I did show my leadership in my CCA too. I was appointed as Chief Librarian, taking care of distributing score to members and keep of the music score.',
+            src : './images/cert/cca_lib_cert.jpg'
+        },
+        {
+            title: 'CCA Contributor',
+            issuer: 'Yuan Ching Secondary School',
+            year: '2023',
+            tags: ['Contribution', 'Participant'],
+            desc: 'My efforts was recognised after 5 years of service in CCA as a member. I\'m so gladful that I was a member of Concert Band because it gave me as so much fun and lesson learn.',
+            src : './images/cert/cca_mem_cert.jpg'
+        },
+        {
+            title: 'Maths Challenge',
+            issuer: 'Yuan Ching Secondary School',
+            year: '2023',
+            tags: ['Mathematic', 'Participant', 'Representative'],
+            desc: 'Math is one of my strongest subjects. My teachers saw my potential and they recommended me to participate in Maths Challenge. Even though it was difficult, I did not give up and try my best to complete the challenge',
+            src : './images/cert/math_challenge.jpg'
+        },
+        {
+            title: 'Director List Year 1 Sem 1',
+            issuer: 'Nanyang Polytechnic',
+            year: '2024',
+            tags: ['Strike For Perfection', 'Focus', 'Study Hard'],
+            desc: 'Game development is my dream course. I will take any opportunity to enhance my skills and knowledge. I put so much efforts to learn how to code. It was not easy because it was my ever first full time coding.',
+            src : './images/cert/dl_y1_sem1.jpg'
+        },
+        {
+            title: 'Director List Year 1 Sem 2',
+            issuer: 'Nanyang Polytechnic',
+            year: '2024',
+            tags: ['Strike For Perfection', 'Focus', 'Consistence'],
+            desc: 'There were so many modules that I did not interested much. However, I did not give up completely because I belive that my GPA will be affected greatly. Therefore, I spent most of my time to catch up the concepts.',
+            src : './images/cert/dl_y1_sem2_cert.jpg'
+        },
+        {
+            title: 'Director List Year 2 Sem 1',
+            issuer: 'Nanyang Polytechnic',
+            year: '2025',
+            tags: ['Strike For Perfection', 'Focus', 'Perseverance'],
+            desc: 'When came to year 2. This was when heavy modules like AI Programming, Audio Programming. I was struggle to learn as it was very confusing. ' +
+                  'Hence, I made my efforts to actively ask questions in lectures so that I can clarify all my confusion.',
+            src : './images/cert/dl_y2_sem1_cert.jpg'
+        },
+        {
+            title: 'GGJ26 Participation',
+            issuer: 'Singapore GGJ',
+            year: '2026',
+            tags: ['Game Jam', 'Unity', 'Teamwork'],
+            desc: 'Working in a team of three to deliver a game it was not easy. There were requried a lot of conversations, efforts and time. ' +
+                  'I was one of the programmers to code the gameplay. The process was short but it gave me so much experience as I needed to balance between school assignment and this external project.' +
+                  'Therefore, it required time management and teamwork to deliver the game before deadline',
+            src : './images/cert/game_jam.jpg'
+        }
+    ]
+};
+
 /* ── DOM REFS ───────────────────────────────────────────────── */
 
 const allSections    = document.querySelectorAll('.section');
@@ -264,14 +539,14 @@ const interactiveTerminal = document.getElementById('interactiveTerminal');
 const viewProfileBtn = document.getElementById('viewProfileBtn');
 const viewInfoBGBtn  = document.getElementById('viewInfoBGBtn');
 const backBtns       = document.querySelectorAll('.back-btn');
+const achievSection  = document.getElementById('achievSection');
 
 // Home
 const typewriterEl   = document.getElementById('typewriter');
 const featuredGrid   = document.getElementById('featuredGrid');
 
-// Education, Skills, Projects
+// Education, Projects
 const eduTimeline    = document.getElementById('eduTimeline');
-const skillsContainer= document.getElementById('skillsContainer');
 const projectFilters = document.getElementById('projectFilters');
 const projectGrid    = document.getElementById('projectGrid');
 
@@ -297,7 +572,7 @@ function showSection(id) {
 
     // Lazy render on first visit
     if (id === 'education' && !eduTimeline.dataset.rendered)    renderEducation();
-    if (id === 'skills'    && !skillsContainer.dataset.rendered) renderSkills();
+    if (id === 'education')                                     initAchievements();
     if (id === 'projects'  && !projectGrid.dataset.rendered)    renderProjects();
 }
 
@@ -765,44 +1040,174 @@ function renderEducation() {
     eduTimeline.querySelectorAll('.edu-item').forEach(el => timelineObs.observe(el));
 }
 
-/* ── SKILLS ─────────────────────────────────────────────────── */
-
-function renderSkills() {
-    if (!skillsContainer) return;
-    skillsContainer.dataset.rendered = 'true';
-    skillsContainer.innerHTML = '';
-
-    SKILLS_DATA.forEach(category => {
-        const col = document.createElement('div');
-        col.className = 'skill-category';
-        col.innerHTML = `
-            <div class="skill-cat-label">${category.label}</div>
-            ${category.items.map(s => `
-                <div class="skill-bar-row">
-                    <span>${s.name}</span>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-width="${s.level}%"></div>
+function renderAchievements() {
+    const track = document.getElementById('achievTrack');
+    if (!track) return;
+ 
+    // ── Panel 1: Intro ──────────────────────────────────────
+    const intro = document.createElement('div');
+    intro.className = 'achiev-panel achiev-panel-intro';
+    intro.innerHTML = `
+        <p class="achiev-intro-text">
+            Qualifications and recognition earned along the journey.
+        </p>
+        <div class="achiev-stats" id="achievStats">
+            <div class="achiev-stat">
+                <span class="achiev-num" data-target="5">0</span>
+                <span class="achiev-label">Certificates</span>
+            </div>
+            <div class="achiev-stat">
+                <span class="achiev-num" data-target="3">0</span>
+                <span class="achiev-label">Awards</span>
+            </div>
+            <div class="achiev-stat">
+                <span class="achiev-num" data-target="2">0</span>
+                <span class="achiev-label">Years Active</span>
+            </div>
+        </div>
+        <span class="achiev-next-label">// certificates &rarr;</span>`;
+    track.appendChild(intro);
+ 
+    // ── Panels 2–N: Certificates ────────────────────────────
+    ACHIEVEMENTS_DATA.certificates.forEach(cert => {
+        const panel = document.createElement('div');
+        panel.className = 'achiev-panel achiev-panel-cert';
+        panel.innerHTML = `
+            <div class="achive-card-container">
+                <div class="achive-card">
+                    <div class="achiev-card-top">
+                        <span class="achiev-icon">&#9633;</span>
+                        <span class="achiev-year">${cert.year}</span>
                     </div>
-                    <span class="skill-pct">${s.level}</span>
+                    <h4 class="achiev-card-title">${cert.title}</h4>
+                    <p  class="achiev-card-issuer">${cert.issuer}</p>
+                    <div class="achiev-card-tags">
+                        ${cert.tags.map(t => `<span class="achiev-tag">${t}</span>`).join('')}
+                    </div>
                 </div>
-            `).join('')}
-        `;
-        skillsContainer.appendChild(col);
+                <div class="achive-card-img">
+                    <img src=${cert.src} alt=${cert.title}>
+                </div>
+                <p class="achiev-card-desc">${cert.desc}</p>
+            </div>`;
+        track.appendChild(panel);
     });
-
-    // Animate bars when each category scrolls into view
-    const skillObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.querySelectorAll('.skill-bar-fill').forEach((fill, i) => {
-                    setTimeout(() => { fill.style.width = fill.dataset.width; }, 150 * i);
-                });
-                skillObs.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    skillsContainer.querySelectorAll('.skill-category').forEach(el => skillObs.observe(el));
+}
+ 
+/* ── ACHIEVEMENTS COUNTER ───────────────────────────────────── */
+ 
+/** Counts each .achiev-num from 0 up to its data-target value */
+function animateCounters() {
+    document.querySelectorAll('.achiev-num:not([data-done])').forEach(el => {
+        el.dataset.done = 'true';
+        const target = parseInt(el.dataset.target, 10);
+        let current  = 0;
+        const tick   = setInterval(() => {
+            current = Math.min(current + 1, target);
+            el.textContent = current;
+            if (current >= target) clearInterval(tick);
+        }, 55);
+    });
+}
+ 
+/* ── ACHIEVEMENTS HORIZONTAL SCROLL ────────────────────────── */
+ 
+let achievRaf      = null;   // rAF throttle handle
+let statsAnimated  = false;  // fire counters only once
+ 
+/**
+ * As the user scrolls vertically through #achievWrapper,
+ * we translate #achievTrack horizontally so panels slide left to right.
+ *
+ * Formula:
+ *   progress  = (-wrapperRect.top) / (wrapper.height - vh)   [0 → 1]
+ *   translateX = progress * (track.scrollWidth - vw)          [px]
+ *
+ * The wrapper height is set to:  vh + (track.scrollWidth - vw)
+ * so progress reaches exactly 1 when the last panel is fully visible.
+ */
+function handleAchievScroll() {
+    if (achievRaf) return;
+    achievRaf = requestAnimationFrame(() => {
+        achievRaf = null;
+ 
+        const wrapper = document.getElementById('achievWrapper');
+        const track   = document.getElementById('achievTrack');
+        const fill    = document.getElementById('achievProgressFill');
+        const hint    = document.getElementById('achievHint');
+        if (!wrapper || !track) return;
+ 
+        const rect     = wrapper.getBoundingClientRect();
+        const total    = wrapper.offsetHeight - window.innerHeight;
+        const progress = Math.max(0, Math.min(1, -rect.top / total));
+ 
+        // Translate the track
+        const maxSlide = track.scrollWidth - window.innerWidth;
+        const slideX   = progress * maxSlide;
+        track.style.transform = `translateX(${-slideX}px)`;
+ 
+        // Progress bar fill
+        if (fill) fill.style.width = `${progress * 100}%`;
+ 
+        // Hide "scroll →" hint once user starts moving
+        if (hint && progress > 0.015) hint.style.opacity = '0';
+ 
+        // Fire counters once when section first enters view
+        if (!statsAnimated && progress > 0) {
+            statsAnimated = true;
+            animateCounters();
+        }
+ 
+        // Reveal panels as they slide into the visible viewport
+        revealVisiblePanels(slideX);
+    });
+}
+ 
+/**
+ * Adds .visible to any panel whose left edge is within the viewport.
+ * Uses data-visible guard so each panel only transitions once.
+ */
+function revealVisiblePanels(slideX) {
+    const vw = window.innerWidth;
+    document.querySelectorAll('#achievTrack .achiev-panel:not([data-visible])').forEach(panel => {
+        // panel.offsetLeft is its position in the track; subtract current slide
+        if (panel.offsetLeft - slideX < vw + 80) {
+            panel.dataset.visible = 'true';
+            panel.classList.add('visible');
+        }
+    });
+}
+ 
+/** Sets the wrapper height so vertical scroll fully traverses the track */
+function setAchievWrapperHeight() {
+    const wrapper = document.getElementById('achievWrapper');
+    const track   = document.getElementById('achievTrack');
+    if (!wrapper || !track) return;
+    const scrollable = Math.max(0, track.scrollWidth - window.innerWidth);
+    wrapper.style.height = `${window.innerHeight + scrollable}px`;
+}
+ 
+/* ── ACHIEVEMENTS INIT ──────────────────────────────────────── */
+ 
+function initAchievements() {
+    const wrapper = document.getElementById('achievWrapper');
+    if (!wrapper || wrapper.dataset.rendered) return;
+    wrapper.dataset.rendered = 'true';
+    statsAnimated = false;
+ 
+    renderAchievements();
+ 
+    // Height must be set AFTER panels exist (they affect track.scrollWidth)
+    setAchievWrapperHeight();
+    window.addEventListener('resize', () => {
+        setAchievWrapperHeight();
+        handleAchievScroll();   // recalculate translate on resize
+    }, { passive: true });
+ 
+    window.addEventListener('scroll', handleAchievScroll, { passive: true });
+ 
+    // Run once immediately in case section is already partially visible
+    handleAchievScroll();
 }
 
 /* ── PROJECTS ───────────────────────────────────────────────── */
