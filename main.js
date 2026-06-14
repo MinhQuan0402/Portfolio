@@ -553,7 +553,7 @@ const projectGrid    = document.getElementById('projectGrid');
 // Contact
 const contactForm    = document.querySelector('.terminal form');
 const statusMsg      = document.getElementById('status');
-const messageArea    = document.getElementById('message');
+const messageArea    = document.getElementById('f-message');
 const wordCountEl    = document.getElementById('wordCount');
 const charCountEl    = document.getElementById('charCount');
 
@@ -1035,7 +1035,7 @@ function renderEducation() {
     // Animate items in as they scroll into view
     const timelineObs = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.1 });
 
     eduTimeline.querySelectorAll('.edu-item').forEach(el => timelineObs.observe(el));
 }
@@ -1053,15 +1053,11 @@ function renderAchievements() {
         </p>
         <div class="achiev-stats" id="achievStats">
             <div class="achiev-stat">
-                <span class="achiev-num" data-target="5">0</span>
+                <span class="achiev-num" data-target="${ACHIEVEMENTS_DATA.certificates.length}">0</span>
                 <span class="achiev-label">Certificates</span>
             </div>
             <div class="achiev-stat">
                 <span class="achiev-num" data-target="3">0</span>
-                <span class="achiev-label">Awards</span>
-            </div>
-            <div class="achiev-stat">
-                <span class="achiev-num" data-target="2">0</span>
                 <span class="achiev-label">Years Active</span>
             </div>
         </div>
@@ -1115,17 +1111,6 @@ function animateCounters() {
 let achievRaf      = null;   // rAF throttle handle
 let statsAnimated  = false;  // fire counters only once
  
-/**
- * As the user scrolls vertically through #achievWrapper,
- * we translate #achievTrack horizontally so panels slide left to right.
- *
- * Formula:
- *   progress  = (-wrapperRect.top) / (wrapper.height - vh)   [0 → 1]
- *   translateX = progress * (track.scrollWidth - vw)          [px]
- *
- * The wrapper height is set to:  vh + (track.scrollWidth - vw)
- * so progress reaches exactly 1 when the last panel is fully visible.
- */
 function handleAchievScroll() {
     if (achievRaf) return;
     achievRaf = requestAnimationFrame(() => {
@@ -1286,10 +1271,35 @@ if (projectFilters) {
 
 /* ── CONTACT FORM ───────────────────────────────────────────── */
 
+if (messageArea) {
+    messageArea.addEventListener('input', () => {
+        const chars = messageArea.value.length;
+        const words = messageArea.value.trim()
+        ? messageArea.value.trim().split(/\s+/).length : 0;
+        
+        charCountEl.textContent = chars;
+        wordCountEl.textContent = words;
+        
+        changeStatus('normal-msg');
+        statusMsg.textContent = chars > 0 ? 'STATUS: Typing...' : 'STATUS: Awaiting input...';
+    });
+}
+
+function changeStatus(status)
+{
+    statusMsg.className = `terminal-status ${status}`;
+}
+
+var recaptcha_response = '';
 if (contactForm) {
     contactForm.addEventListener('submit', async e => {
         e.preventDefault();
-        statusMsg.textContent = 'STATUS: Sending transmission...';
+
+        if(recaptcha_response.length == 0) {
+            changeStatus('error-msg');
+            statusMsg.textContent = 'STATUS: reCAPTCHA is required.';
+            return;
+        }
 
         try {
             const res = await fetch(contactForm.action, {
@@ -1299,30 +1309,45 @@ if (contactForm) {
             });
 
             if (res.ok) {
-                statusMsg.innerHTML = 'STATUS: Transmission sent &#10003;';
-                contactForm.reset();
-                wordCountEl.textContent = '0';
-                charCountEl.textContent = '0';
-                setTimeout(() => { statusMsg.textContent = 'STATUS: Awaiting input...'; }, 3000);
+                setTimeout(() => {
+                    changeStatus('normal-msg');
+                    statusMsg.textContent = 'STATUS: Sending transmission...';
+                    setTimeout(() => {
+                        changeStatus('success-msg'); 
+                        statusMsg.innerHTML = 'STATUS: Transmission sent &#10003;';
+                        contactForm.reset();
+                        wordCountEl.textContent = '0';
+                        charCountEl.textContent = '0';
+                        setTimeout(() => {
+                            changeStatus('normal-msg'); 
+                            statusMsg.textContent = 'STATUS: Awaiting input...'; 
+                        }, randon_range(2000, 2500));
+                    }, randon_range(1000, 1500));
+                }, randon_range(1000, 2000));
             } else {
+                changeStatus('error-msg');
                 statusMsg.textContent = 'STATUS: Transmission failed — try again.';
             }
         } catch {
+            changeStatus('error-msg');
             statusMsg.textContent = 'STATUS: Network error.';
         }
     });
 }
 
-if (messageArea) {
-    messageArea.addEventListener('input', () => {
-        const chars = messageArea.value.length;
-        const words = messageArea.value.trim()
-            ? messageArea.value.trim().split(/\s+/).length : 0;
+function verifyCaptcha(token) {
+    recaptcha_response = token;
+    
+    if(recaptcha_response.length != 0) {
+        changeStatus('success-msg');
+        statusMsg.textContent = 'STATUS: Verified Done!';
+        return;
+    }
+}
 
-        charCountEl.textContent = chars;
-        wordCountEl.textContent = words;
-        statusMsg.textContent = chars > 0 ? 'STATUS: Typing...' : 'STATUS: Awaiting input...';
-    });
+
+function randon_range(min, max) {
+    return Math.floor(Math.random() * max) + min;
 }
 
 /* ── INIT ───────────────────────────────────────────────────── */

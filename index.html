@@ -6,8 +6,6 @@
     <link rel="icon" type="image/x-icon" href="./images/MyLogo.png">
     <title>Minh Quan — Game Developer</title>
     <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
-    
 </head>
 <body>
 
@@ -69,7 +67,7 @@
                 <span class="term-filename">profile.sh</span>
             </div>
             <div class="term-body">
-                <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">whoami</span></p>
+                <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">whoAmI</span></p>
                 <p class="term-line term-out">Nguyen Minh Quan &mdash; Aspiring Game Developer</p>
                 <br>
                 <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">cat mission.txt</span></p>
@@ -326,27 +324,35 @@
                     <a href="https://www.instagram.com/ng._mq?igsh=dnBlejA4dTNvc3Aw&utm_source=qr" target="_blank" class="contact-link">
                         <span>&#128247; Instagram</span><span class="c-arrow">&#8599;</span>
                     </a>
+
                 </div>
             </div>
 
             <div class="contact-form-panel terminal">
                 <div class="terminal-header">COMM TERMINAL</div>
                 <form action="https://formspree.io/f/mlgpbjja" method="POST">
-                    <label>Pilot Name</label>
-                    <input type="text" name="name" placeholder="Enter your name" required>
-                    <input type="hidden" name="_subject" value="Portfolio Contact Message">
-                    <label>Transmission ID</label>
-                    <input type="email" name="email" placeholder="Enter your email" required>
-                    <label>Message Payload</label>
+                    <label for="f-userName">Pilot Name</label>
+                        <input id="f-userName" type="text" name="name" placeholder="Enter your name..." autocomplete="name" required>
+                    <label for="f-userEmail">Transmission ID</label>
+                        <input id="f-userEmail" type="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+                    <label for="f-subject">Subject</label>
+                    <select id="f-subject" name="_subject" required>
+                        <option value="">Select a topic...</option>
+                        <option>Job / Internship Opportunity</option>
+                        <option>Collaboration on a Game</option>
+                        <option>Freelance Project</option>
+                        <option>General Inquiry</option>
+                        <option>Just saying hi!</option>
+                    </select>
+                    <label for="f-message">Message Payload</label>
                     <div class="textarea-wrapper">
-                        <textarea name="message" id="message" placeholder="Enter your message" rows="5" required></textarea>
+                        <textarea name="message" id="f-message" placeholder="Enter your message" rows="5" required></textarea>
                         <div class="word-counter">
                             <span id="wordCount">0</span> TOKENS &nbsp;|&nbsp; <span id="charCount">0</span> BYTES
                         </div>
                     </div>
-                    <input type="text" name="_gotcha" style="display:none">
-                    <div data-formspree-captcha></div>
-                    <button type="submit">SEND TRANSMISSION</button>
+                    <div class="g-recaptcha" data-sitekey="6LcmVB8tAAAAADEcAdj2VbdDB-bESqcxXCGHhU_o" data-callback="verifyCaptcha"></div>
+                    <button type="submit">SUBMIT TRANSMISSION</button>
                 </form>
                 <div class="terminal-status" id="status">STATUS: Awaiting input...</div>
             </div>
@@ -398,6 +404,8 @@
     </footer>
 
     <button id="backToTop" aria-label="Back to top">&#8593;</button>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://formspree.io/js/formbutton-v1.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
