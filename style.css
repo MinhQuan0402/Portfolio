@@ -1384,6 +1384,7 @@ to keep them visually separated and allow for better scrolling behavior */
 .terminal {
     background: transparent;
     border: 1px solid var(--text);
+    max-width: 700px;
 }
 
 .terminal-header {
@@ -1437,9 +1438,16 @@ to keep them visually separated and allow for better scrolling behavior */
 .terminal textarea:focus { border-color: var(--text); }
 .terminal textarea { resize: vertical; min-height: fit-content; }
 
+#terminalBotGrp {
+    display: flex;
+    flex-direction: row;
+    margin-top: 22px;
+    align-items: center;
+    gap: var(--gap);
+}
+
 .terminal button[type="submit"] {
     position: relative;
-    margin-top: 22px;
     padding: 12px;
     width: 100%;
     background: transparent;
@@ -1485,10 +1493,6 @@ to keep them visually separated and allow for better scrolling behavior */
     font-size: 0.66rem;
     letter-spacing: 0.08em;
     border-top: 1px solid var(--border);
-}
-
-.g-recaptcha {
-    margin-top: 20px;
 }
 
 .normal-msg  { color: (var(--muted)); }
@@ -1583,7 +1587,10 @@ to keep them visually separated and allow for better scrolling behavior */
    RESPONSIVE
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-    .contact-layout { grid-template-columns: 1fr; }
+    .contact-layout { grid-template-columns: 1fr; max-width: 100%; }
+    #terminalBotGrp {flex-wrap: wrap;}
+    .contact-left,
+    .terminal { max-width: fit-content; }
 
     /* Education: collapse to single column */
     .edu-timeline::before { left: 18px; }
