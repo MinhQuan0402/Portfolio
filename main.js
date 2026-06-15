@@ -1197,10 +1197,12 @@ function initAchievements() {
 
 /* ── PROJECTS ───────────────────────────────────────────────── */
 
-function buildProjectCard(proj) {
+function buildProjectCard(proj, index) {
     const card = document.createElement('div');
     card.className   = 'proj-card';
     card.dataset.category = proj.category;
+    
+    card.dataset.id       = `${index}`;
 
     const thumb = proj.image
         ? `<div class="proj-thumb"><img src="${proj.image}" alt="${proj.title}" loading="lazy"></div>`
@@ -1243,13 +1245,7 @@ function renderProjects() {
     if (!projectGrid) return;
     projectGrid.dataset.rendered = 'true';
     projectGrid.innerHTML = '';
-    PROJECTS_DATA.forEach(p => projectGrid.appendChild(buildProjectCard(p)));
-}
-
-function renderFeatured() {
-    if (!featuredGrid) return;
-    
-    PROJECTS_DATA.slice(6, 9).forEach(p => featuredGrid.appendChild(buildProjectCard(p)));
+    PROJECTS_DATA.forEach((p, index) => projectGrid.appendChild(buildProjectCard(p, index)));
 }
 
 // Filter click handler (event delegation on the filter bar)
@@ -1266,6 +1262,122 @@ if (projectFilters) {
             card.dataset.hidden = (filter === 'all' || card.dataset.category === filter)
                 ? 'false' : 'true';
         });
+    });
+}
+
+/* ── FEATURED PROJECTS CAROUSEL ─────────────────────────────── */
+ 
+const CAROUSEL_INTERVAL = 5000; // ms between auto-advance
+let carouselIndex = 0;
+let carouselTimer = null;
+ 
+/** Builds one carousel slide: image (or code placeholder), title, tags only */
+function buildCarouselSlide(proj, index) {
+    const slide = document.createElement('div');
+    slide.className   = 'carousel-slide';
+    slide.dataset.id  = index;
+ 
+    const img = proj.image
+        ? `<img src="${proj.image}" alt="${proj.title}" loading="lazy">`
+        : `<div class="proj-thumb-code">
+               // ${proj.file}<br>
+               #include &lt;gameplay.h&gt;<br>
+               int main() {<br>
+               &nbsp;&nbsp;build(); launch();<br>
+               }
+           </div>`;
+ 
+    slide.innerHTML = `
+        <div class="carousel-slide-img">${img}</div>
+        <div class="carousel-slide-info">
+            <h3 class="carousel-slide-title">${proj.title}</h3>
+            <div class="carousel-slide-tags">
+                ${proj.tech.map(t => `<span class="proj-tag">${t}</span>`).join('')}
+            </div>
+        </div>
+    `;
+ 
+    slide.addEventListener('click', () => goToProject(index));
+    return slide;
+}
+ 
+/** Builds slides + dots, then starts autoplay */
+function renderFeaturedCarousel() {
+    if (!carouselTrack) return;
+ 
+    PROJECTS_DATA.forEach((proj, index) => {
+        carouselTrack.appendChild(buildCarouselSlide(proj, index));
+ 
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', `Go to ${proj.title}`);
+        dot.addEventListener('click', () => { goToSlide(carouselDots.children.length
+            ? [...carouselDots.children].indexOf(dot) : 0); restartAutoplay(); });
+        carouselDots.appendChild(dot);
+    });
+ 
+    updateCarousel();
+    startAutoplay();
+ 
+    // Pause on hover/focus, resume on leave
+    featuredCarousel?.addEventListener('mouseenter', stopAutoplay);
+    featuredCarousel?.addEventListener('mouseleave', startAutoplay);
+}
+ 
+/** Moves the track + updates active dot to match carouselIndex */
+function updateCarousel() {
+    if (!carouselTrack) return;
+    carouselTrack.style.transform = `translateX(-${carouselIndex * 100}%)`;
+    [...carouselDots.children].forEach((dot, i) => {
+        dot.classList.toggle('active', i === carouselIndex);
+    });
+}
+ 
+/** Jumps to a slide index, wrapping around at both ends */
+function goToSlide(index) {
+    const total = PROJECTS_DATA.length;
+    carouselIndex = (index + total) % total;
+    updateCarousel();
+}
+ 
+function startAutoplay() {
+    stopAutoplay();
+    carouselTimer = setInterval(() => goToSlide(carouselIndex + 1), CAROUSEL_INTERVAL);
+}
+ 
+function stopAutoplay() {
+    if (carouselTimer) clearInterval(carouselTimer);
+    carouselTimer = null;
+}
+ 
+function restartAutoplay() { startAutoplay(); }
+ 
+carouselNext?.addEventListener('click', () => { goToSlide(carouselIndex + 1); restartAutoplay(); });
+carouselPrev?.addEventListener('click', () => { goToSlide(carouselIndex - 1); restartAutoplay(); });
+ 
+/**
+ * Navigates to the Projects section, clears any active filter so the
+ * target card is visible, then scrolls to and pulses that project card.
+ */
+function goToProject(id) {
+    showSection('projects');
+    updateActiveNav('projects');
+ 
+    // Reset filter to "all" so the target card can't be hidden
+    projectFilters?.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === 'all');
+    });
+    projectGrid?.querySelectorAll('.proj-card').forEach(card => {
+        card.dataset.hidden = 'false';
+    });
+ 
+    // Wait a frame so layout is ready after the section becomes visible
+    requestAnimationFrame(() => {
+        const target = projectGrid?.querySelector(`[data-id="${id}"]`);
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('highlight');
+        setTimeout(() => target.classList.remove('highlight'), 1500);
     });
 }
 
@@ -1350,10 +1462,51 @@ function randon_range(min, max) {
     return Math.floor(Math.random() * max) + min;
 }
 
+
+/* ── CURSOR TRAIL (subtle) ───────────────────────────────────── */
+(function initCursorTrail() {
+  const dots = [];
+  const N = 8;
+  let mx = 0, my = 0;
+
+  for (let i = 0; i < N; i++) {
+    const d = document.createElement('div');
+    d.style.cssText = `
+      position:fixed;pointer-events:none;z-index:9998;border-radius:50%;
+      width:${4 + i * 1}px;height:${4 + i * 1}px;
+      background:rgba(74,222,128,${0.4 - i * 0.05});
+      transition:transform 0.${i + 1}s ease;
+      transform:translate(-50%,-50%);
+    `;
+    document.body.appendChild(d);
+    dots.push(d);
+  }
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dots.forEach((d, i) => {
+      setTimeout(() => {
+        d.style.left = mx + 'px';
+        d.style.top  = my + 'px';
+      }, i * 20);
+    });
+  });
+})();
+
+/* ── KEYBOARD SHORTCUTS ─────────────────────────────────────── */
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  const keyMap = { '1': 'home', '2': 'about', '3': 'education', '4': 'projects', '5': 'contact' };
+  if (keyMap[e.key] && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+    showSection(keyMap[e.key]);
+    updateActiveNav(keyMap[e.key]);
+  }
+});
+
 /* ── INIT ───────────────────────────────────────────────────── */
 
 // Render featured cards immediately (home section is active on load)
-renderFeatured();
+renderFeaturedCarousel();
 
 // Set home class for rollers
 document.body.classList.add('is-home');
