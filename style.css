@@ -1329,11 +1329,13 @@ to keep them visually separated and allow for better scrolling behavior */
 
 /* Card */
 .proj-card {
+    border: 1px solid var(--bg);
     background: var(--surface);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: background var(--transition);
+    transform: scale(1);
+    transition: background var(--transition), transform var(--transition);
 }
 
 @keyframes highlight-pulse {
@@ -1343,7 +1345,7 @@ to keep them visually separated and allow for better scrolling behavior */
 .proj-card.highlight { animation: highlight-pulse 0.7s ease-in-out 2; }
 
 .proj-card[data-hidden="true"] { display: none; }
-.proj-card:hover { background: var(--surface-2); }
+.proj-card:hover { background: var(--surface-2); border: 1px solid var(--text); transform: scale(1.03); }
 
 /* Card header bar */
 .proj-card-header {
