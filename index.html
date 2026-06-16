@@ -6,6 +6,9 @@
     <link rel="icon" type="image/x-icon" href="./images/MyLogo.png">
     <title>Minh Quan — Game Developer</title>
     <link rel="stylesheet" href="style.css">
+    <script async src='https://www.google.com/recaptcha/api.js'></script>
+    <script async src="https://formspree.io/js/formbutton-v1.min.js"></script>
+    <script defer src="main.js"></script>
 </head>
 <body>
 
@@ -359,7 +362,7 @@
                     </div>
                     <div id="terminalBotGrp">
                         <div class="g-recaptcha" data-sitekey="6LcmVB8tAAAAADEcAdj2VbdDB-bESqcxXCGHhU_o" data-callback="verifyCaptcha"></div>
-                        <button type="submit">SUBMIT TRANSMISSION</button>
+                        <button id="f-submit" type="submit">SUBMIT TRANSMISSION</button>
                     </div>
                 </form>
                 <div class="terminal-status" id="status">STATUS: Awaiting input...</div>
@@ -368,6 +371,52 @@
         </div>
     </section>
 
+    <!--Project Modal  ===============================================-->
+    <div class="modal-overlay" id="proj-modal-overlay" onclick="closeProjModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeProjModal()">✕</button>
+            <div id="proj-modal-content">
+                <div class="tc-badge " style="display:inline-block;margin-bottom:1rem">GAME</div>
+                <h2 class="modal-proj-title">ASTRO DEFENDER</h2>
+                <div class="modal-meta">
+                    <div class="modal-meta-item"><span>DATE:</span> <span>January 2024</span></div>
+                    <div class="modal-meta-item"><span>CREATOR:</span> <span>Solo Project</span></div>
+                </div>
+                <div style="background:rgba(0,0,0,.3);border:1px dashed var(--border);padding:.75rem 1rem;margin-bottom:1rem;">
+                    <span style="font-size:.7rem">WHY THIS PROJECT:</span>
+                    <p style="margin-top:.3rem; color: var(--muted);">Built as my Year 2 major project to demonstrate core Unity skills — physics, UI systems, and game feel polish.</p>
+                </div>
+                <p class="modal-desc">A 2D top-down space shooter built from scratch in Unity. Features procedurally generated enemy waves, 5 types of power-ups, a combo multiplier system, and an online leaderboard via Firebase. The game includes original pixel art assets drawn in Aseprite.</p>
+                <div class="modal-media-row">
+                    <div class="modal-img">🎮<br>
+                        <span style="font-size:.6rem;font-family:var(--font-code);color:var(--muted)">Screenshot 1</span>
+                    </div>
+                    <div class="modal-img">📷<br>
+                        <span style="font-size:.6rem;font-family:var(--font-code);color:var(--muted)">Screenshot 2</span>
+                    </div>
+                    <div class="modal-img">📷<br>
+                        <span style="font-size:.6rem;font-family:var(--font-code);color:var(--muted)">Screenshot 3</span>
+                    </div>
+                </div>
+                <div class="modal-tags">
+                    <span class="proj-tag">Unity</span>
+                    <span class="proj-tag">C#</span>
+                    <span class="proj-tag">2D</span>
+                    <span class="proj-tag">Firebase</span>
+                    <span class="proj-tag">Aseprite</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="img-modal-overlay">
+        <button class="modal-close" onclick="closeImgModal()">✕</button>
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div id="img-modal-content">
+                <img id="model-img" src="./images/projects/2dgea_a1.png" alt="image">
+            </div>
+        </div>
+    </div>
 
     <!-- ════════════════════ FOOTER ════════════════════ -->
     <footer class="footer">
@@ -412,8 +461,5 @@
     </footer>
 
     <button id="backToTop" aria-label="Back to top">&#8593;</button>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="https://formspree.io/js/formbutton-v1.min.js"></script>
-    <script src="main.js"></script>
 </body>
 </html>
