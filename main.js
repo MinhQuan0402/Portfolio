@@ -78,6 +78,7 @@ const PROJECTS_DATA = [
                 'Input-driven state machine (idle, flying, summon, attack) animates parts via transform matrices and time-based updates.',
         tech: ['C++', 'OpenGL', 'Graphics'],
         status: 'completed',
+        video: '',
         images: ['cgm_a1.png'],
         year: '2024'
     },
@@ -115,6 +116,7 @@ const PROJECTS_DATA = [
                 'Core architectural features include a high-performance graphics rendering pipeline and a modular character system for complex animations.',
         tech: ['C++', 'Coded Animation', 'Coded Meshes', 'Hierarchical Modelling', 'Matrix Stack', 'Data Structure'],
         status: 'completed',
+        video: 'cgp_a1.mkv',
         images: ['cgp_a1.png'],
         year: '2024'
     },
@@ -133,6 +135,7 @@ const PROJECTS_DATA = [
                 'and a real-time obstacle avoidance system driven by randomized, continuous asteroid hazards.',
         tech: ['OpenGL', 'C++', 'Physics', 'Collision Detection'],
         status: 'completed',
+        video: 'Formop_a1.mp4',
         images: ['formo_a1.png'],
         year: '2024'
     },
@@ -169,7 +172,8 @@ const PROJECTS_DATA = [
                 'and a modular entity management system that coordinates real-time 3D collision detection and player progression.',
         tech: ['OpenGL', 'C++', 'Custom Shader', 'Collision Detection', 'Entity Management'],
         status: 'completed',
-        images: ['cgp_a2.png'],
+        video: 'gcp_a2.mkv',
+        images: ['cgp_a2.png', 'cgp_a2_2.png', 'cgp_a2_3.png', 'cgp_a2_4.png', 'cgp_a2_5.png', 'cgp_a2_6.png', 'cgp_a2_7.png'],
         year: '2025'
     },
     {
@@ -187,7 +191,8 @@ const PROJECTS_DATA = [
                 'all cleanly orchestrated through dedicated singleton manager subsystems for scenes, entity lifecycles, asset loading, and spatial partitioning.',
         tech: ['OpenGL', 'C++', 'Physics', 'Complex Collision Detection + Resolve', 'Rigidbody 2D'],
         status: 'completed',
-        images: ['formo_a2.png'],
+        video: 'Formop_a2.mp4',
+        images: ['formo_a2.png', 'formo_a2_2.png', 'formo_a2_3.png'],
         year: '2025'
     },
     {
@@ -206,6 +211,7 @@ const PROJECTS_DATA = [
                 'event-triggered horror cinematic sequences.',
         tech: ['OpenGL', 'C++', 'Physics Engine', 'Complex Collision Detection + Resolve'],
         status: 'completed',
+        video: 'cgsp.mp4',
         images: ['cgsp.png'],
         year: '2025'
     },
@@ -315,7 +321,8 @@ const PROJECTS_DATA = [
                 'using declarative XML layouts to ensure complete responsive consistency across varying mobile screen viewports.',
         tech: ['Andriod Studio', 'Java', 'XML'],
         status: 'completed',
-        images: ['mobile_programming.jpg'],
+        video: 'mobile.mp4',
+        images: ['mobile.jpg', 'mobile_2.jpg', 'mobile_3.jpg', 'mobile_4.jpg', 'mobile_5.jpg', 'mobile_6.jpg'],
         year: '2025'
     },
     {
@@ -333,6 +340,7 @@ const PROJECTS_DATA = [
                 'depth-based water refraction systems, and dynamic RGBA channel-mapped splatting texturing for high-fidelity terrain blends.',
         tech: ['Unity', 'Shaderlab', 'C#', 'HLSL'],
         status: 'completed',
+        video: 'shader_a1.mkv',
         images: ['shader_a1.png'],
         year: '2025'
     },
@@ -352,6 +360,7 @@ const PROJECTS_DATA = [
                 'and speed-dependent radial blur rendering to maximize player feedback during high-velocity action states.',
         tech: ['Unity', 'Shaderlab', 'C#', 'HLSL', 'Post-processing', 'Shader Graph'],
         status: 'completed',
+        video: 'shader_a2.mkv',
         images: ['shader_a2.png'],
         year: '2025'
     },
@@ -370,6 +379,7 @@ const PROJECTS_DATA = [
                 'and a modular RPC (Remote Procedure Call) event pipeline handling interactive task synchronization, player voting phases, and match-state transitions.',
         tech: ['Unity', 'Netcode', 'C#', 'Multiplayer', 'Networking'],
         status: 'completed',
+        video: 'mgp.mkv',
         images: ['mgp.png'],
         year: '2025'
     },
@@ -1492,6 +1502,8 @@ function goToProject(id) {
 }
 
 const projModalOverlay = document.getElementById('proj-modal-overlay');
+const projModalBox = document.getElementById('proj-modal-box');
+var isProjectOpen = false;
 function openModal(projIndex) {
     projModalOverlay.style.zIndex = 2000;
     const proj = PROJECTS_DATA[projIndex];
@@ -1513,7 +1525,7 @@ function openModal(projIndex) {
             </figure>
         `;
     }
-
+    
     mediaHtml = '';
     proj.images.forEach((image, i) => {
         mediaHtml +=    `<div class="proj-modal-img">
@@ -1535,19 +1547,22 @@ function openModal(projIndex) {
             <p style="margin-top:.3rem; color: var(--muted);">${proj.reason}</p>
         </div>
         <p class="modal-desc">${proj.desc}</p>
-        <h3 style="margin-bottom: 10px;">Galery:</h3>
+        <h3 style="margin-bottom: 10px;">Gallery:</h3>
         <div class="modal-media-row">${mediaHtml}</div>
         <div class="modal-tags">${proj.tech.map(t => `<span class="proj-tag">${t}</span>`).join('')}</div>
     `;
-
+    
     projModalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
+    isProjectOpen = true;
 }
 
 function closeProjModal() {
+    projModalBox.scrollTop = 0;
     setTimeout(() => {document.getElementById('proj-modal-content').innerHTML = '';}, 500);
     projModalOverlay.classList.remove('active');
     document.body.style.overflow = '';
+    isProjectOpen = false;
 }
 
 document.addEventListener('keydown', e => {
@@ -1742,9 +1757,12 @@ function openImgModal(src, alt) {
 }
 
 function closeImgModal() {
-    document.getElementById('img-modal-content').innerHTML = '';
-    document.getElementById('img-modal-overlay').classList.remove('active');
-    document.body.style.overflow = '';
+    isZoom = false;
+    imgModalContent.style.transform = `scale(1)`;
+    imgModalContent.classList.remove('max-zoomed');
+    imgModalContent.innerHTML = '';
+    imgModalOverlay.classList.remove('active');
+    if (!isProjectOpen) document.body.style.overflow = '';
 }
 
 imgModalOverlay.addEventListener('mouseup', stopDragging);
