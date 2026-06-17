@@ -172,7 +172,7 @@ const PROJECTS_DATA = [
                 'and a modular entity management system that coordinates real-time 3D collision detection and player progression.',
         tech: ['OpenGL', 'C++', 'Custom Shader', 'Collision Detection', 'Entity Management'],
         status: 'completed',
-        video: 'gcp_a2.mkv',
+        video: 'gcp_a2_.mkv',
         images: ['cgp_a2.png', 'cgp_a2_2.png', 'cgp_a2_3.png', 'cgp_a2_4.png', 'cgp_a2_5.png', 'cgp_a2_6.png', 'cgp_a2_7.png'],
         year: '2025'
     },
