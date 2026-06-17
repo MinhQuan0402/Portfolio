@@ -1,2 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+videos/*.mp4 filter=lfs diff=lfs merge=lfs -text
+videos/projects/*.mp4 filter=lfs diff=lfs merge=lfs -text
+videos/projects/*.mkv filter=lfs diff=lfs merge=lfs -text
+/videos/projects filter=lfs diff=lfs merge=lfs -text
+*.mvk filter=lfs diff=lfs merge=lfs -text
